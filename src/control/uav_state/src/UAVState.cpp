@@ -58,7 +58,7 @@ Quadrotor::GetMass(void) const
 void 
 Quadrotor::SetGravity(const double& val)
 {
-    state_.g=val;
+    state_.g = val;
 }
 
 const double&
@@ -70,7 +70,7 @@ Quadrotor::GetGravity(void) const
 void 
 Quadrotor::SetInertialMatrix(const Eigen::Matrix3d& val)
 {
-    state_.J=val;
+    state_.J = val;
 }
 
 const Eigen::Matrix3d& 
@@ -80,7 +80,8 @@ Quadrotor::GetInertialMatrix(void)const
 }
 
 void 
-Quadrotor::SetPos(const Eigen::Vector3d& val){
+Quadrotor::SetPos(const Eigen::Vector3d& val)
+{
     state_.pos = val;
 }
 
@@ -88,6 +89,55 @@ const Eigen::Vector3d&
 Quadrotor::GetPos(void)const
 {
     return state_.pos;
+}
+
+void 
+Quadrotor::SetOmega(const Eigen::Vector3d& val)
+{
+    state_.omega = val;
+}
+
+const Eigen::Vector3d& 
+Quadrotor::GetOmega(void) const
+{
+    return state_.omega;
+}
+
+
+void 
+Quadrotor::SetAcc(const Eigen::Vector3d& val)
+{
+    state_.acc = val;
+}
+
+const Eigen::Vector3d& 
+Quadrotor::GetAcc(void) const
+{
+    return state_.acc;
+}
+
+void 
+Quadrotor::SetOrientation(const Eigen::Quaterniond& val)
+{
+    state_.orientation = val;
+}
+
+const Eigen::Quaterniond& 
+Quadrotor::GetOrientation(void) const
+{
+    return state_.orientation;
+}
+
+void 
+Quadrotor::SetVel(const Eigen::Vector3d& val)
+{
+    state_.vel = val;
+}
+
+const Eigen::Vector3d& 
+Quadrotor::GetVel(void) const
+{
+    return state_.vel;
 }
 
 

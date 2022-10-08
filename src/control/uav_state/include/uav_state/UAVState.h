@@ -2,7 +2,7 @@
 #define __UAV_STATE__
 
 #include <Eigen/Core>
-
+#include <Eigen/Dense>
 namespace Control
 {
 
@@ -19,9 +19,10 @@ struct state
     Eigen::Vector3d jerk;//加加速度
     
     Eigen::Vector3d eulerAngle;//角度  欧拉角
-    Eigen::Vector3d omega;//角速度
+    Eigen::Vector3d omega;//角速度 
     Eigen::Matrix3d R;//旋转矩阵
     
+    Eigen::Quaterniond orientation;//四元数
     double mass;//质量
     double g;//重力加速度
     Eigen::Matrix3d J;//惯性矩阵；
@@ -38,7 +39,15 @@ struct state
     void SetInertialMatrix(const Eigen::Matrix3d& val);
     const Eigen::Matrix3d& GetInertialMatrix(void)const;
     void SetPos(const Eigen::Vector3d& val);
-    const Eigen::Vector3d& GetPos(void)const;
+    const Eigen::Vector3d& GetPos(void) const;
+    void SetOmega(const Eigen::Vector3d& val);
+    const Eigen::Vector3d& GetOmega(void) const;
+    void SetAcc(const Eigen::Vector3d& val);
+    const Eigen::Vector3d& GetAcc(void) const;
+    void SetOrientation(const Eigen::Quaterniond& val);
+    const Eigen::Quaterniond& GetOrientation(void) const;
+    void SetVel(const Eigen::Vector3d& val);
+    const Eigen::Vector3d& GetVel(void) const;
 private:
     state state_;
 };

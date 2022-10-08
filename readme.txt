@@ -1,6 +1,8 @@
 定义环境变量
 source devel/setup.sh
 
+函数命名采用大驼峰法
+变量命名采用小驼峰法
 
 
 github 命令
