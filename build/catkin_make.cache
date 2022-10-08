@@ -1,0 +1,2 @@
+control/example:control/mavros_interaction:control/uav_state
+-DCATKIN_DEVEL_PREFIX=/home/sw/homo_geo/devel -DCMAKE_INSTALL_PREFIX=/home/sw/homo_geo/install -G Unix Makefiles
