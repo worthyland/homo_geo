@@ -20,6 +20,7 @@ MavrosInteraction::MavrosInteraction(const ros::NodeHandle& nh):nh_(nh)
 
 MavrosInteraction::~MavrosInteraction()
 {
+    
 }
 
 void 
