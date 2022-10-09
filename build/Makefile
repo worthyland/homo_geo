@@ -493,19 +493,6 @@ std_msgs_generate_messages_py/fast:
 .PHONY : std_msgs_generate_messages_py/fast
 
 #=============================================================================
-# Target rules for targets named example_test
-
-# Build rule for target.
-example_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 example_test
-.PHONY : example_test
-
-# fast build rule for target.
-example_test/fast:
-	$(MAKE) -f control/example/CMakeFiles/example_test.dir/build.make control/example/CMakeFiles/example_test.dir/build
-.PHONY : example_test/fast
-
-#=============================================================================
 # Target rules for targets named MavrosInteractionTest
 
 # Build rule for target.
@@ -569,7 +556,6 @@ help:
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... roscpp_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_py"
-	@echo "... example_test"
 	@echo "... MavrosInteractionTest"
 	@echo "... mavros_interaction"
 .PHONY : help

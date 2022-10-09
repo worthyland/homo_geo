@@ -109,7 +109,7 @@ include_directories(${EIGEN3_INCLUDE_DIR})
 catkin_package(
    INCLUDE_DIRS include
    LIBRARIES mavros_interaction
-   CATKIN_DEPENDS uav_state
+   #CATKIN_DEPENDS uav_state
 #  CATKIN_DEPENDS roscpp std_msgs
 #  DEPENDS system_lib
 )

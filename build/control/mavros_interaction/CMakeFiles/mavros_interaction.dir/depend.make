@@ -11,6 +11,7 @@ control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteracti
 control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteraction.cpp.o: /opt/ros/melodic/include/geometry_msgs/Twist.h
 control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteraction.cpp.o: /opt/ros/melodic/include/geometry_msgs/TwistStamped.h
 control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteraction.cpp.o: /opt/ros/melodic/include/geometry_msgs/Vector3.h
+control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteraction.cpp.o: /opt/ros/melodic/include/mavros_msgs/State.h
 control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteraction.cpp.o: /opt/ros/melodic/include/ros/advertise_options.h
 control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteraction.cpp.o: /opt/ros/melodic/include/ros/advertise_service_options.h
 control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteraction.cpp.o: /opt/ros/melodic/include/ros/assert.h

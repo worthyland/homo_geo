@@ -1,8 +1,0 @@
-prefix=/home/sw/homo_geo/install
-
-Name: example
-Description: Description of example
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: roscpp uav_state

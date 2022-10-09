@@ -264,7 +264,7 @@ gtest/googlemock/preinstall: gtest/googlemock/gtest/preinstall
 gtest/googlemock/CMakeFiles/gmock_main.dir/all:
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=8,9,10,11 "Built target gmock_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=6,7,8,9 "Built target gmock_main"
 .PHONY : gtest/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -296,7 +296,7 @@ clean: gtest/googlemock/CMakeFiles/gmock_main.dir/clean
 gtest/googlemock/CMakeFiles/gmock.dir/all:
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock.dir/build.make gtest/googlemock/CMakeFiles/gmock.dir/depend
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock.dir/build.make gtest/googlemock/CMakeFiles/gmock.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=5,6,7 "Built target gmock"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=3,4,5 "Built target gmock"
 .PHONY : gtest/googlemock/CMakeFiles/gmock.dir/all
 
 # Build rule for subdir invocation for target.
@@ -347,7 +347,7 @@ gtest/googlemock/gtest/preinstall:
 gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/all: gtest/googlemock/gtest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) -f gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=14,15 "Built target gtest_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=12,13 "Built target gtest_main"
 .PHONY : gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -379,7 +379,7 @@ clean: gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/clean
 gtest/googlemock/gtest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f gtest/googlemock/gtest/CMakeFiles/gtest.dir/build.make gtest/googlemock/gtest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f gtest/googlemock/gtest/CMakeFiles/gtest.dir/build.make gtest/googlemock/gtest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=12,13 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=10,11 "Built target gtest"
 .PHONY : gtest/googlemock/gtest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
@@ -668,7 +668,7 @@ clean: control/uav_state/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
 control/uav_state/CMakeFiles/uav_state.dir/all:
 	$(MAKE) -f control/uav_state/CMakeFiles/uav_state.dir/build.make control/uav_state/CMakeFiles/uav_state.dir/depend
 	$(MAKE) -f control/uav_state/CMakeFiles/uav_state.dir/build.make control/uav_state/CMakeFiles/uav_state.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=18,19 "Built target uav_state"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=16,17 "Built target uav_state"
 .PHONY : control/uav_state/CMakeFiles/uav_state.dir/all
 
 # Include target in all.
@@ -955,61 +955,6 @@ clean: control/uav_state/CMakeFiles/std_msgs_generate_messages_py.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory control/example
-
-# Convenience name for "all" pass in the directory.
-control/example/all: control/example/CMakeFiles/example_test.dir/all
-
-.PHONY : control/example/all
-
-# Convenience name for "clean" pass in the directory.
-control/example/clean: control/example/CMakeFiles/example_test.dir/clean
-
-.PHONY : control/example/clean
-
-# Convenience name for "preinstall" pass in the directory.
-control/example/preinstall:
-
-.PHONY : control/example/preinstall
-
-#=============================================================================
-# Target rules for target control/example/CMakeFiles/example_test.dir
-
-# All Build rule for target.
-control/example/CMakeFiles/example_test.dir/all: control/uav_state/CMakeFiles/uav_state.dir/all
-	$(MAKE) -f control/example/CMakeFiles/example_test.dir/build.make control/example/CMakeFiles/example_test.dir/depend
-	$(MAKE) -f control/example/CMakeFiles/example_test.dir/build.make control/example/CMakeFiles/example_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=3,4 "Built target example_test"
-.PHONY : control/example/CMakeFiles/example_test.dir/all
-
-# Include target in all.
-all: control/example/CMakeFiles/example_test.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-control/example/CMakeFiles/example_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sw/homo_geo/build/CMakeFiles 4
-	$(MAKE) -f CMakeFiles/Makefile2 control/example/CMakeFiles/example_test.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sw/homo_geo/build/CMakeFiles 0
-.PHONY : control/example/CMakeFiles/example_test.dir/rule
-
-# Convenience name for target.
-example_test: control/example/CMakeFiles/example_test.dir/rule
-
-.PHONY : example_test
-
-# clean rule for target.
-control/example/CMakeFiles/example_test.dir/clean:
-	$(MAKE) -f control/example/CMakeFiles/example_test.dir/build.make control/example/CMakeFiles/example_test.dir/clean
-.PHONY : control/example/CMakeFiles/example_test.dir/clean
-
-# clean rule for target.
-clean: control/example/CMakeFiles/example_test.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
 # Directory level rules for directory control/mavros_interaction
 
 # Convenience name for "all" pass in the directory.
@@ -1074,7 +1019,7 @@ clean: control/mavros_interaction/CMakeFiles/MavrosInteractionTest.dir/clean
 control/mavros_interaction/CMakeFiles/mavros_interaction.dir/all: control/uav_state/CMakeFiles/uav_state.dir/all
 	$(MAKE) -f control/mavros_interaction/CMakeFiles/mavros_interaction.dir/build.make control/mavros_interaction/CMakeFiles/mavros_interaction.dir/depend
 	$(MAKE) -f control/mavros_interaction/CMakeFiles/mavros_interaction.dir/build.make control/mavros_interaction/CMakeFiles/mavros_interaction.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=16,17 "Built target mavros_interaction"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=14,15 "Built target mavros_interaction"
 .PHONY : control/mavros_interaction/CMakeFiles/mavros_interaction.dir/all
 
 # Include target in all.

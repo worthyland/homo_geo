@@ -5,4 +5,4 @@ Description: Description of mavros_interaction
 Version: 0.0.0
 Cflags: -I/home/sw/homo_geo/src/control/mavros_interaction/include
 Libs: -L${prefix}/lib -lmavros_interaction
-Requires: uav_state
+Requires: 

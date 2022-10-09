@@ -1,30 +1,25 @@
 #include <mavros_interaction/MavrosInteraction.h>
+
 namespace Control
 {
 
-MavrosInteraction::MavrosInteraction()
+MavrosInteraction::MavrosInteraction(const ros::NodeHandle& nh):nh_(nh)
 {
-    nh_ =  new ros::NodeHandle();
-    posSub = nh_->subscribe("mavros/local_position/pose",1,&MavrosInteraction::PoseCallback,this);
-    imuSub = nh_->subscribe("mavros/imu/data",1,&MavrosInteraction::IMUCallback,this);
-    velocityBodySub = nh_->subscribe("mavros/local_position/velocity_body",1,&MavrosInteraction::VelocityBodyCallback,this);
-    velocityLocalSub = nh_->subscribe("mavros/local_position/velocity_local",1,&MavrosInteraction::VelocityLocalCallback,this);
+    posSub = nh_.subscribe("mavros/local_position/pose",1,&MavrosInteraction::PoseCallback,this);
+    imuSub = nh_.subscribe("mavros/imu/data",1,&MavrosInteraction::IMUCallback,this);
+    velocityBodySub = nh_.subscribe("mavros/local_position/velocity_body",1,&MavrosInteraction::VelocityBodyCallback,this);
+    velocityLocalSub = nh_.subscribe("mavros/local_position/velocity_local",1,&MavrosInteraction::VelocityLocalCallback,this);
+    px4ControlStateSub = nh_.subscribe("mavros/state",1,&MavrosInteraction::PX4ControlStateCallback,this);
+    
     posCallbackState = false;
     imuCallbackState = false;
     velocityBodyCallbackState = false;
     velocityLocalCallbackState = false;
 } 
 
-MavrosInteraction::MavrosInteraction(const std::string& nh)
-{
-    
-    nh_ =  new ros::NodeHandle(nh);
-
-}
 
 MavrosInteraction::~MavrosInteraction()
 {
-    delete nh_;
 }
 
 void 
@@ -65,7 +60,25 @@ void
 MavrosInteraction::VelocityLocalCallback(const geometry_msgs::TwistStamped::ConstPtr& msg)
 {
     velocityLocalCallbackState = true;
-
+    Eigen::Vector3d vallocalTemp(msg->twist.linear.x,msg->twist.linear.y,
+                            msg->twist.linear.z);
+    uav_.SetVel(vallocalTemp);
 }
+
+void
+MavrosInteraction::PX4ControlStateCallback(const mavros_msgs::State::ConstPtr& msg)
+{
+    currentControlMode_ = *msg;
+}
+
+
+
+void 
+MavrosInteraction::ShowUavState(int num) const
+{
+    uav_.ShowState(num);
+}
+
+
 
 }

@@ -58,14 +58,6 @@
 /home/sw/homo_geo/build/control/uav_state/CMakeFiles/std_msgs_generate_messages_nodejs.dir
 /home/sw/homo_geo/build/control/uav_state/CMakeFiles/roscpp_generate_messages_nodejs.dir
 /home/sw/homo_geo/build/control/uav_state/CMakeFiles/std_msgs_generate_messages_py.dir
-/home/sw/homo_geo/build/control/example/CMakeFiles/install/strip.dir
-/home/sw/homo_geo/build/control/example/CMakeFiles/list_install_components.dir
-/home/sw/homo_geo/build/control/example/CMakeFiles/install/local.dir
-/home/sw/homo_geo/build/control/example/CMakeFiles/test.dir
-/home/sw/homo_geo/build/control/example/CMakeFiles/example_test.dir
-/home/sw/homo_geo/build/control/example/CMakeFiles/edit_cache.dir
-/home/sw/homo_geo/build/control/example/CMakeFiles/rebuild_cache.dir
-/home/sw/homo_geo/build/control/example/CMakeFiles/install.dir
 /home/sw/homo_geo/build/control/mavros_interaction/CMakeFiles/install/strip.dir
 /home/sw/homo_geo/build/control/mavros_interaction/CMakeFiles/install.dir
 /home/sw/homo_geo/build/control/mavros_interaction/CMakeFiles/MavrosInteractionTest.dir

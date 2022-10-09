@@ -23,6 +23,8 @@ geometry_msgs/TwistStamped.h
 -
 geometry_msgs/PoseStamped.h
 -
+mavros_msgs/State.h
+-
 uav_state/UAVState.h
 -
 
@@ -34,6 +36,10 @@ mavros_interaction/MavrosInteraction.h
 Eigen/Core
 -
 Eigen/Dense
+-
+iostream
+-
+iomanip
 -
 
 /opt/ros/melodic/include/geometry_msgs/Point.h
@@ -162,6 +168,24 @@ ros/serialization.h
 ros/builtin_message_traits.h
 -
 ros/message_operations.h
+-
+
+/opt/ros/melodic/include/mavros_msgs/State.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
 -
 
 /opt/ros/melodic/include/ros/advertise_options.h

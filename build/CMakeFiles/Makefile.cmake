@@ -15,8 +15,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "catkin/catkin_generated/version/package.cmake"
   "catkin_generated/installspace/_setup_util.py"
   "catkin_generated/order_packages.cmake"
-  "control/example/catkin_generated/ordered_paths.cmake"
-  "control/example/catkin_generated/package.cmake"
   "control/mavros_interaction/catkin_generated/ordered_paths.cmake"
   "control/mavros_interaction/catkin_generated/package.cmake"
   "control/uav_state/catkin_generated/ordered_paths.cmake"
@@ -24,8 +22,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/sw/homo_geo/devel/share/uav_state/cmake/uav_stateConfig-version.cmake"
   "/home/sw/homo_geo/devel/share/uav_state/cmake/uav_stateConfig.cmake"
   "/home/sw/homo_geo/src/CMakeLists.txt"
-  "/home/sw/homo_geo/src/control/example/CMakeLists.txt"
-  "/home/sw/homo_geo/src/control/example/package.xml"
   "/home/sw/homo_geo/src/control/mavros_interaction/CMakeLists.txt"
   "/home/sw/homo_geo/src/control/mavros_interaction/package.xml"
   "/home/sw/homo_geo/src/control/uav_state/CMakeLists.txt"
@@ -263,7 +259,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "gtest/googlemock/CMakeFiles/CMakeDirectoryInformation.cmake"
   "gtest/googlemock/gtest/CMakeFiles/CMakeDirectoryInformation.cmake"
   "control/uav_state/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "control/example/CMakeFiles/CMakeDirectoryInformation.cmake"
   "control/mavros_interaction/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
@@ -294,7 +289,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "control/uav_state/CMakeFiles/std_msgs_generate_messages_nodejs.dir/DependInfo.cmake"
   "control/uav_state/CMakeFiles/roscpp_generate_messages_nodejs.dir/DependInfo.cmake"
   "control/uav_state/CMakeFiles/std_msgs_generate_messages_py.dir/DependInfo.cmake"
-  "control/example/CMakeFiles/example_test.dir/DependInfo.cmake"
   "control/mavros_interaction/CMakeFiles/MavrosInteractionTest.dir/DependInfo.cmake"
   "control/mavros_interaction/CMakeFiles/mavros_interaction.dir/DependInfo.cmake"
   )

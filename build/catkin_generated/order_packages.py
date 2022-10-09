@@ -2,4 +2,4 @@
 source_root_dir = '/home/sw/homo_geo/src'
 whitelisted_packages = ''.split(';') if '' != '' else []
 blacklisted_packages = ''.split(';') if '' != '' else []
-underlay_workspaces = '/home/sw/sw_ws/devel;/opt/ros/melodic'.split(';') if '/home/sw/sw_ws/devel;/opt/ros/melodic' != '' else []
+underlay_workspaces = '/home/sw/homo_geo/devel;/home/sw/sw_ws/devel;/opt/ros/melodic'.split(';') if '/home/sw/homo_geo/devel;/home/sw/sw_ws/devel;/opt/ros/melodic' != '' else []

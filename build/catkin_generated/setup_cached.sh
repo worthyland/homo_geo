@@ -7,7 +7,6 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/sw/homo_geo/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH='/home/sw/sw_ws/devel/lib:/opt/ros/melodic/lib:/home/sw/Firmware/build/px4_sitl_default/build_gazebo:/home/sw/Firmware/build/px4_sitl_default/build_gazebo'
+export PKG_CONFIG_PATH='/home/sw/sw_ws/devel/lib/pkgconfig:/opt/ros/melodic/lib/pkgconfig'
 export PWD='/home/sw/homo_geo/build'
-export ROSLISP_PACKAGE_DIRECTORIES="/home/sw/homo_geo/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH='/home/sw/homo_geo/src:/home/sw/sw_ws/src:/opt/ros/melodic/share'

@@ -3,6 +3,9 @@
 
 #include <Eigen/Core>
 #include <Eigen/Dense>
+#include<iostream>
+#include<iomanip>
+
 namespace Control
 {
 
@@ -48,6 +51,11 @@ struct state
     const Eigen::Quaterniond& GetOrientation(void) const;
     void SetVel(const Eigen::Vector3d& val);
     const Eigen::Vector3d& GetVel(void) const;
+
+    void ShowState(int num) const;
+    inline void ShowVal(const std::string& str,const Eigen::Vector3d& val,int num) const;
+    inline void ShowVal(const std::string& str,const Eigen::Matrix3d& val,int num) const;
+    inline void ShowVal(const std::string& str,const Eigen::Quaterniond& val,int num) const;
 private:
     state state_;
 };
