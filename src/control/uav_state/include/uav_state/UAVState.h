@@ -30,7 +30,9 @@ struct state
     double g;//重力加速度
     Eigen::Matrix3d J;//惯性矩阵；
 };
-
+private:
+    state state_;
+public:    
     Quadrotor();
     Quadrotor(const double& mass_,const double& g_,const Eigen::Matrix3d& J_);
     ~Quadrotor();
@@ -52,13 +54,17 @@ struct state
     void SetVel(const Eigen::Vector3d& val);
     const Eigen::Vector3d& GetVel(void) const;
 
+
+    const Quadrotor::state& GetState(void)const;
     void ShowState(int num) const;
     inline void ShowVal(const std::string& str,const Eigen::Vector3d& val,int num) const;
     inline void ShowVal(const std::string& str,const Eigen::Matrix3d& val,int num) const;
     inline void ShowVal(const std::string& str,const Eigen::Quaterniond& val,int num) const;
-private:
-    state state_;
+
 };
+
+
+
 
 
 

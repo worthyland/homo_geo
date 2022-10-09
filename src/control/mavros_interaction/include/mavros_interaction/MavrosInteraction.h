@@ -2,9 +2,6 @@
 #define __MAVROS_INTERACTION__
 //系统的头文件
 #include <iostream>
-#include <vector>
-#include <cmath>
-#include <algorithm>
 #include <ros/ros.h>
 #include <sensor_msgs/Imu.h>
 #include <geometry_msgs/TwistStamped.h>
@@ -38,15 +35,17 @@ private:
 
     Quadrotor uav_;
     mavros_msgs::State currentControlMode_;
-public:
-    MavrosInteraction(const ros::NodeHandle& nh);
 
-    ~MavrosInteraction();
     virtual void PoseCallback(const geometry_msgs::PoseStamped::ConstPtr& msg);
     virtual void IMUCallback(const sensor_msgs::Imu::ConstPtr& msg);
     virtual void VelocityBodyCallback(const geometry_msgs::TwistStamped::ConstPtr& msg);
     virtual void VelocityLocalCallback(const geometry_msgs::TwistStamped::ConstPtr& msg);
     virtual void PX4ControlStateCallback(const mavros_msgs::State::ConstPtr& msg);
+
+public:
+    MavrosInteraction(const ros::NodeHandle& nh);
+
+    ~MavrosInteraction();
 
 
     // void SetState(const mavros_msgs::State& val);

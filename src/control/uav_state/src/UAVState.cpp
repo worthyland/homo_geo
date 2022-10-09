@@ -141,6 +141,12 @@ Quadrotor::GetVel(void) const
 }
 
 
+const Quadrotor::state& 
+Quadrotor::GetState(void) const
+{
+    return state_;
+}
+
 
 
 void Quadrotor::ShowState(int num) const
@@ -155,6 +161,9 @@ void Quadrotor::ShowState(int num) const
     ShowVal("旋转矩阵R:",state_.R,num);
     ShowVal("四元数orientation:",state_.orientation,num);
 }
+
+
+
 
 inline void Quadrotor::ShowVal(const std::string& str,const Eigen::Vector3d& val,int num) const
 {

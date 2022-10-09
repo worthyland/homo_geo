@@ -20,7 +20,7 @@ MavrosInteraction::MavrosInteraction(const ros::NodeHandle& nh):nh_(nh)
 
 MavrosInteraction::~MavrosInteraction()
 {
-    
+
 }
 
 void 
@@ -71,6 +71,7 @@ MavrosInteraction::PX4ControlStateCallback(const mavros_msgs::State::ConstPtr& m
 {
     currentControlMode_ = *msg;
 }
+
 
 
 

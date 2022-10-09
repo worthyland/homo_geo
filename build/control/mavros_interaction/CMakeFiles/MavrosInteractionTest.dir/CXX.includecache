@@ -9,12 +9,6 @@
 /home/sw/homo_geo/src/control/mavros_interaction/include/mavros_interaction/MavrosInteraction.h
 iostream
 -
-vector
--
-cmath
--
-algorithm
--
 ros/ros.h
 -
 sensor_msgs/Imu.h
