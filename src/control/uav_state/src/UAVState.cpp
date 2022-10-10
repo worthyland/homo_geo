@@ -16,6 +16,8 @@ Quadrotor::Quadrotor(const double& mass_,const double& g_,const Eigen::Matrix3d&
     state_.omega = Eigen::Vector3d::Zero();
     state_.R = Eigen::Matrix3d::Identity();
     state_.J = J_;
+    Eigen::Quaterniond orientationTmp(1,0,0,0);
+    state_.orientation = orientationTmp;
 }
 
 Quadrotor::Quadrotor()
@@ -29,7 +31,9 @@ Quadrotor::Quadrotor()
     state_.eulerAngle = Eigen::Vector3d::Zero();
     state_.omega = Eigen::Vector3d::Zero();
     state_.R = Eigen::Matrix3d::Identity();
-    state_.J = Eigen::Matrix3d::Identity();;
+    state_.J = Eigen::Matrix3d::Identity();
+    Eigen::Quaterniond orientationTmp(1,0,0,0);
+    state_.orientation = orientationTmp;
 }
 
 Quadrotor::~Quadrotor()

@@ -765,6 +765,19 @@ homography_geometric_control/fast:
 	$(MAKE) -f homography_geometric_control/CMakeFiles/homography_geometric_control.dir/build.make homography_geometric_control/CMakeFiles/homography_geometric_control.dir/build
 .PHONY : homography_geometric_control/fast
 
+#=============================================================================
+# Target rules for targets named homography_from_pose
+
+# Build rule for target.
+homography_from_pose: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 homography_from_pose
+.PHONY : homography_from_pose
+
+# fast build rule for target.
+homography_from_pose/fast:
+	$(MAKE) -f homography_geometric_control/CMakeFiles/homography_from_pose.dir/build.make homography_geometric_control/CMakeFiles/homography_from_pose.dir/build
+.PHONY : homography_from_pose/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -824,6 +837,7 @@ help:
 	@echo "... mavros_interaction"
 	@echo "... homo_geo"
 	@echo "... homography_geometric_control"
+	@echo "... homography_from_pose"
 .PHONY : help
 
 

@@ -369,6 +369,9 @@ gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 //Value Computed by CMake
 homo_msgs_BINARY_DIR:STATIC=/home/sw/homo_geo/build/homo_msgs
 
+//The directory containing a CMake configuration file for homo_msgs.
+homo_msgs_DIR:PATH=/home/sw/homo_geo/devel/share/homo_msgs/cmake
+
 //Value Computed by CMake
 homo_msgs_SOURCE_DIR:STATIC=/home/sw/homo_geo/src/homo_msgs
 

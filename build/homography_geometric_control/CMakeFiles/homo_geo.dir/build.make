@@ -98,6 +98,8 @@ homo_geo_EXTERNAL_OBJECTS =
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /usr/lib/x86_64-linux-gnu/libboost_regex.so
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /opt/ros/melodic/lib/libxmlrpcpp.so
+/home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /home/sw/homo_geo/devel/lib/libmavros_interaction.so
+/home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /home/sw/homo_geo/devel/lib/libuav_state.so
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /opt/ros/melodic/lib/libroscpp_serialization.so
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /opt/ros/melodic/lib/librostime.so
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /opt/ros/melodic/lib/libcpp_common.so
@@ -108,8 +110,6 @@ homo_geo_EXTERNAL_OBJECTS =
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /usr/lib/x86_64-linux-gnu/libpthread.so
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
-/home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /home/sw/homo_geo/devel/lib/libmavros_interaction.so
-/home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /home/sw/homo_geo/devel/lib/libuav_state.so
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /home/sw/homo_geo/devel/lib/libhomography_geometric_control.so
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /opt/ros/melodic/lib/libroscpp.so
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so

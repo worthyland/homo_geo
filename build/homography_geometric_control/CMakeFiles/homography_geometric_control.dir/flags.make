@@ -6,5 +6,5 @@ CXX_FLAGS = -fPIC
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"homography_geometric_control\" -Dhomography_geometric_control_EXPORTS
 
-CXX_INCLUDES = -I/usr/include/eigen3 -I/home/sw/homo_geo/src/homography_geometric_control/include -I/home/sw/homo_geo/src/control/mavros_interaction/include -I/home/sw/homo_geo/src/control/uav_state/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp 
+CXX_INCLUDES = -I/usr/include/eigen3 -I/home/sw/homo_geo/src/homography_geometric_control/include -I/home/sw/homo_geo/devel/include -I/home/sw/homo_geo/src/control/mavros_interaction/include -I/home/sw/homo_geo/src/control/uav_state/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp 
 

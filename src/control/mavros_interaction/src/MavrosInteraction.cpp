@@ -86,5 +86,10 @@ MavrosInteraction::ShowUavState(int num) const
     uav_.ShowState(num);
 }
 
+const Quadrotor::state& 
+MavrosInteraction::GetState(void) const
+{
+    return uav_.GetState();
+}
 
 }

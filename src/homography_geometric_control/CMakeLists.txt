@@ -16,6 +16,9 @@ find_package(catkin REQUIRED COMPONENTS
   #自己写的库
   mavros_interaction
   uav_state
+
+  #自己定义的消息格式
+  homo_msgs
 )
 find_package(Eigen3 REQUIRED)
 
@@ -46,6 +49,12 @@ add_library(${PROJECT_NAME}
 
 add_executable(homo_geo test/homo_geo.cpp)
 target_link_libraries(homo_geo 
+${catkin_LIBRARIES}
+${PROJECT_NAME}
+)
+
+add_executable(homography_from_pose test/homography_from_pose.cpp)
+target_link_libraries(homography_from_pose 
 ${catkin_LIBRARIES}
 ${PROJECT_NAME}
 )

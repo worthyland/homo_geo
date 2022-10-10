@@ -56,6 +56,28 @@ CMAKE_BINARY_DIR = /home/sw/homo_geo/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
@@ -68,17 +90,16 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
 
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -103,16 +124,6 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -123,17 +134,6 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -197,6 +197,21 @@ homography_geometric_control/fast:
 	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/homography_geometric_control.dir/build.make homography_geometric_control/CMakeFiles/homography_geometric_control.dir/build
 .PHONY : homography_geometric_control/fast
 
+# Convenience name for target.
+homography_geometric_control/CMakeFiles/homography_from_pose.dir/rule:
+	cd /home/sw/homo_geo/build && $(MAKE) -f CMakeFiles/Makefile2 homography_geometric_control/CMakeFiles/homography_from_pose.dir/rule
+.PHONY : homography_geometric_control/CMakeFiles/homography_from_pose.dir/rule
+
+# Convenience name for target.
+homography_from_pose: homography_geometric_control/CMakeFiles/homography_from_pose.dir/rule
+
+.PHONY : homography_from_pose
+
+# fast build rule for target.
+homography_from_pose/fast:
+	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/homography_from_pose.dir/build.make homography_geometric_control/CMakeFiles/homography_from_pose.dir/build
+.PHONY : homography_from_pose/fast
+
 src/HomographyGeometricControl.o: src/HomographyGeometricControl.cpp.o
 
 .PHONY : src/HomographyGeometricControl.o
@@ -251,27 +266,58 @@ test/homo_geo.cpp.s:
 	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/homo_geo.dir/build.make homography_geometric_control/CMakeFiles/homo_geo.dir/test/homo_geo.cpp.s
 .PHONY : test/homo_geo.cpp.s
 
+test/homography_from_pose.o: test/homography_from_pose.cpp.o
+
+.PHONY : test/homography_from_pose.o
+
+# target to build an object file
+test/homography_from_pose.cpp.o:
+	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/homography_from_pose.dir/build.make homography_geometric_control/CMakeFiles/homography_from_pose.dir/test/homography_from_pose.cpp.o
+.PHONY : test/homography_from_pose.cpp.o
+
+test/homography_from_pose.i: test/homography_from_pose.cpp.i
+
+.PHONY : test/homography_from_pose.i
+
+# target to preprocess a source file
+test/homography_from_pose.cpp.i:
+	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/homography_from_pose.dir/build.make homography_geometric_control/CMakeFiles/homography_from_pose.dir/test/homography_from_pose.cpp.i
+.PHONY : test/homography_from_pose.cpp.i
+
+test/homography_from_pose.s: test/homography_from_pose.cpp.s
+
+.PHONY : test/homography_from_pose.s
+
+# target to generate assembly for a file
+test/homography_from_pose.cpp.s:
+	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/homography_from_pose.dir/build.make homography_geometric_control/CMakeFiles/homography_from_pose.dir/test/homography_from_pose.cpp.s
+.PHONY : test/homography_from_pose.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/strip"
 	@echo "... install"
+	@echo "... list_install_components"
 	@echo "... homo_geo"
 	@echo "... homography_geometric_control"
+	@echo "... install/strip"
+	@echo "... homography_from_pose"
+	@echo "... rebuild_cache"
 	@echo "... install/local"
 	@echo "... test"
-	@echo "... list_install_components"
 	@echo "... edit_cache"
-	@echo "... rebuild_cache"
 	@echo "... src/HomographyGeometricControl.o"
 	@echo "... src/HomographyGeometricControl.i"
 	@echo "... src/HomographyGeometricControl.s"
 	@echo "... test/homo_geo.o"
 	@echo "... test/homo_geo.i"
 	@echo "... test/homo_geo.s"
+	@echo "... test/homography_from_pose.o"
+	@echo "... test/homography_from_pose.i"
+	@echo "... test/homography_from_pose.s"
 .PHONY : help
 
 

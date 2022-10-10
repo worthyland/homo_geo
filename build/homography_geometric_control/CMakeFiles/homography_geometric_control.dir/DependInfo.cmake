@@ -19,6 +19,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/eigen3"
   "/home/sw/homo_geo/src/homography_geometric_control/include"
+  "/home/sw/homo_geo/devel/include"
   "/home/sw/homo_geo/src/control/mavros_interaction/include"
   "/home/sw/homo_geo/src/control/uav_state/include"
   "/opt/ros/melodic/include"

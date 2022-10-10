@@ -24,7 +24,10 @@ set(CMAKE_MAKEFILE_DEPENDS
   "homo_msgs/cmake/homo_msgs-genmsg.cmake"
   "homography_geometric_control/catkin_generated/ordered_paths.cmake"
   "homography_geometric_control/catkin_generated/package.cmake"
+  "/home/sw/homo_geo/devel/share/homo_msgs/cmake/homo_msgs-msg-extras.cmake"
   "/home/sw/homo_geo/devel/share/homo_msgs/cmake/homo_msgs-msg-paths.cmake"
+  "/home/sw/homo_geo/devel/share/homo_msgs/cmake/homo_msgsConfig-version.cmake"
+  "/home/sw/homo_geo/devel/share/homo_msgs/cmake/homo_msgsConfig.cmake"
   "/home/sw/homo_geo/devel/share/mavros_interaction/cmake/mavros_interactionConfig-version.cmake"
   "/home/sw/homo_geo/devel/share/mavros_interaction/cmake/mavros_interactionConfig.cmake"
   "/home/sw/homo_geo/devel/share/uav_state/cmake/uav_stateConfig-version.cmake"
@@ -281,4 +284,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "control/mavros_interaction/CMakeFiles/mavros_interaction.dir/DependInfo.cmake"
   "homography_geometric_control/CMakeFiles/homo_geo.dir/DependInfo.cmake"
   "homography_geometric_control/CMakeFiles/homography_geometric_control.dir/DependInfo.cmake"
+  "homography_geometric_control/CMakeFiles/homography_from_pose.dir/DependInfo.cmake"
   )

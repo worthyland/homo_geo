@@ -40,6 +40,8 @@ private:
     Quadrotor uav_;
     mavros_msgs::State currentControlMode_;
 
+    
+private:
     virtual void PoseCallback(const geometry_msgs::PoseStamped::ConstPtr& msg);
     virtual void IMUCallback(const sensor_msgs::Imu::ConstPtr& msg);
     virtual void VelocityBodyCallback(const geometry_msgs::TwistStamped::ConstPtr& msg);
@@ -52,7 +54,7 @@ public:
     ~MavrosInteraction();
 
     void ShowUavState(int num) const;
-    inline void safasfdasd();
+    const Quadrotor::state& GetState(void)const;
 
 };
 
