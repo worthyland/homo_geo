@@ -3,6 +3,11 @@
 namespace Control
 {
 
+MavrosInteraction::MavrosInteraction()
+{
+
+} 
+
 MavrosInteraction::MavrosInteraction(const ros::NodeHandle& nh):nh_(nh)
 {
     posSub = nh_.subscribe("mavros/local_position/pose",1,&MavrosInteraction::PoseCallback,this);
@@ -80,7 +85,6 @@ MavrosInteraction::ShowUavState(int num) const
 {
     uav_.ShowState(num);
 }
-
 
 
 }

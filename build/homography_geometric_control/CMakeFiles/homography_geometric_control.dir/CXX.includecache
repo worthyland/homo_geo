@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sw/homo_geo/src/homography_geometric_control/include/homography_geometric_control/HomographyGeometricControl.h
+
+/home/sw/homo_geo/src/homography_geometric_control/src/HomographyGeometricControl.cpp
+homography_geometric_control/HomographyGeometricControl.h
+-
+

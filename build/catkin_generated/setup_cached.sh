@@ -7,6 +7,5 @@
 # new environment variables
 
 # modified environment variables
-export LD_LIBRARY_PATH='/home/sw/sw_ws/devel/lib:/opt/ros/melodic/lib:/home/sw/Firmware/build/px4_sitl_default/build_gazebo:/home/sw/Firmware/build/px4_sitl_default/build_gazebo'
-export PKG_CONFIG_PATH='/home/sw/sw_ws/devel/lib/pkgconfig:/opt/ros/melodic/lib/pkgconfig'
 export PWD='/home/sw/homo_geo/build'
+export PYTHONPATH="/home/sw/homo_geo/devel/lib/python2.7/dist-packages:$PYTHONPATH"

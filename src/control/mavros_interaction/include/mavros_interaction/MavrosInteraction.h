@@ -1,3 +1,7 @@
+/*
+
+*/
+
 #ifndef __MAVROS_INTERACTION__
 #define __MAVROS_INTERACTION__
 //系统的头文件
@@ -43,13 +47,12 @@ private:
     virtual void PX4ControlStateCallback(const mavros_msgs::State::ConstPtr& msg);
 
 public:
+    MavrosInteraction();
     MavrosInteraction(const ros::NodeHandle& nh);
-
     ~MavrosInteraction();
 
-
-    // void SetState(const mavros_msgs::State& val);
     void ShowUavState(int num) const;
+    inline void safasfdasd();
 
 };
 

@@ -5,6 +5,18 @@ source devel/setup.sh
 变量命名采用小驼峰法
 
 
+
+
+
+
+修改mavros中IMU的发布频率为250hz
+rosrun mavros mavcmd long 511 31 4000 0 0 0 0 0
+511 为修改指令
+31 为imu的编码  对应的话题名称为mavros/imu/data (103 对应的话题名称为mavros/imu/data_raw)
+4000 为4000us，对应为250hz
+后面五个零固定写法
+
+
 github 命令
 
 克隆仓库：git clone <git地址>

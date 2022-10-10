@@ -131,8 +131,10 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/sw/homo_geo/build/gtest/cmake_install.cmake")
+  include("/home/sw/homo_geo/build/homo_msgs/cmake_install.cmake")
   include("/home/sw/homo_geo/build/control/uav_state/cmake_install.cmake")
   include("/home/sw/homo_geo/build/control/mavros_interaction/cmake_install.cmake")
+  include("/home/sw/homo_geo/build/homography_geometric_control/cmake_install.cmake")
 
 endif()
 

@@ -56,6 +56,7 @@ public:
 
 
     const Quadrotor::state& GetState(void)const;
+    
     void ShowState(int num) const;
     inline void ShowVal(const std::string& str,const Eigen::Vector3d& val,int num) const;
     inline void ShowVal(const std::string& str,const Eigen::Matrix3d& val,int num) const;

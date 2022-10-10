@@ -2,12 +2,6 @@
 using namespace Control;
 
 
-void
-IMUUpdate(const sensor_msgs::Imu::ConstPtr& msg)
-{
-
-}
-
 
 int main(int argc, char *argv[]){
 
