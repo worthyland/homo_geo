@@ -8,7 +8,7 @@ MavrosInteraction::MavrosInteraction()
 
 } 
 
-MavrosInteraction::MavrosInteraction(const ros::NodeHandle& nh):nh_(nh)
+MavrosInteraction::MavrosInteraction(const ros::NodeHandle& nh,const ros::NodeHandle& nhParam):nh_(nh),nhParam_(nhParam)
 {
     posSub = nh_.subscribe("mavros/local_position/pose",1,&MavrosInteraction::PoseCallback,this);
     imuSub = nh_.subscribe("mavros/imu/data",1,&MavrosInteraction::IMUCallback,this);
@@ -53,6 +53,16 @@ MavrosInteraction::IMUCallback(const sensor_msgs::Imu::ConstPtr& msg)
     Eigen::Quaterniond  orientationTmp(msg->orientation.w,msg->orientation.x,
                                         msg->orientation.y,msg->orientation.z); 
     uav_.SetOrientation(orientationTmp);
+    // uav_.ShowVal("sdaa",orientationTmp,5);
+    //更新旋转矩阵
+    Eigen::Matrix3d RTmp(orientationTmp.toRotationMatrix());
+    uav_.SetR(RTmp);
+
+    //根新欧拉角，以RPY（ZYX）
+    Eigen::Vector3d eulerAngle = Eigen::Vector3d::Zero();
+    eulerAngle = uav_.QuaternionToEulerAngles(orientationTmp);
+    uav_.SetEulerAngle(eulerAngle);
+    //  uav_.ShowVal("sdasda",eulerAngle,4);
 }
 
 void
@@ -87,9 +97,17 @@ MavrosInteraction::ShowUavState(int num) const
 }
 
 const Quadrotor::state& 
-MavrosInteraction::GetState(void) const
+MavrosInteraction::GetState() const
 {
+
     return uav_.GetState();
 }
+
+const Quadrotor& 
+MavrosInteraction::GetUav()const
+{
+    return uav_;
+}
+
 
 }

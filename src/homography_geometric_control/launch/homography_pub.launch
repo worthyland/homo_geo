@@ -1,0 +1,12 @@
+<launch>
+
+ <node pkg="homography_geometric_control" name="homography_publish" type="homography_publish" output="screen">
+    <param name="posDesire/x" value="0.0"/>
+    <param name="posDesire/y" value="0.0"/>
+    <param name="posDesire/z" value="4.0"/>
+    <param name="n/x" value="0.0"/>
+    <param name="n/y" value="0.0"/>
+    <param name="n/z" value="1.0"/>
+    <param name="d" value="4.0"/>
+ </node>
+</launch>

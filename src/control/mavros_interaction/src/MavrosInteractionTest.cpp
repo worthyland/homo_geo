@@ -7,8 +7,8 @@ int main(int argc, char *argv[]){
 
     ros::init(argc, argv, "mavros_interaction_test_node");
     ros::NodeHandle nh;
-
-    MavrosInteraction test(nh);
+    ros::NodeHandle nhParam("~");
+    MavrosInteraction test(nh,nhParam);
 
     ros::Rate rate(60.0);
     while(ros::ok()){

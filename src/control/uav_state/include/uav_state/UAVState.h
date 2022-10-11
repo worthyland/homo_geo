@@ -53,14 +53,19 @@ public:
     const Eigen::Quaterniond& GetOrientation(void) const;
     void SetVel(const Eigen::Vector3d& val);
     const Eigen::Vector3d& GetVel(void) const;
-
+    void SetR(const Eigen::Matrix3d& val);//
+    const Eigen::Matrix3d& GetR(void) const;
+    void SetEulerAngle(const Eigen::Vector3d& val);//
+    const Eigen::Vector3d& GetEulerAngle(void) const;
 
     const Quadrotor::state& GetState(void)const;
     
-    void ShowState(int num) const;
-    inline void ShowVal(const std::string& str,const Eigen::Vector3d& val,int num) const;
-    inline void ShowVal(const std::string& str,const Eigen::Matrix3d& val,int num) const;
-    inline void ShowVal(const std::string& str,const Eigen::Quaterniond& val,int num) const;
+    const Eigen::Vector3d QuaternionToEulerAngles(const Eigen::Quaterniond& q) const;
+
+    void ShowState(int num=5) const;//显示到小数点后5位  由num设置
+    void ShowVal(const std::string& str,const Eigen::Vector3d& val,int num = 5) const;
+    void ShowVal(const std::string& str,const Eigen::Matrix3d& val,int num = 5) const;
+    void ShowVal(const std::string& str,const Eigen::Quaterniond& val,int num = 5) const;
 
 };
 

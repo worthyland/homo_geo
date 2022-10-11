@@ -1329,7 +1329,7 @@ clean: control/uav_state/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
 control/uav_state/CMakeFiles/uav_state.dir/all:
 	$(MAKE) -f control/uav_state/CMakeFiles/uav_state.dir/build.make control/uav_state/CMakeFiles/uav_state.dir/depend
 	$(MAKE) -f control/uav_state/CMakeFiles/uav_state.dir/build.make control/uav_state/CMakeFiles/uav_state.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=29,30 "Built target uav_state"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=31,32 "Built target uav_state"
 .PHONY : control/uav_state/CMakeFiles/uav_state.dir/all
 
 # Include target in all.
@@ -1647,19 +1647,74 @@ clean: control/mavros_interaction/CMakeFiles/mavros_interaction.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Directory level rules for directory control/so3_control
+
+# Convenience name for "all" pass in the directory.
+control/so3_control/all: control/so3_control/CMakeFiles/so3_control.dir/all
+
+.PHONY : control/so3_control/all
+
+# Convenience name for "clean" pass in the directory.
+control/so3_control/clean: control/so3_control/CMakeFiles/so3_control.dir/clean
+
+.PHONY : control/so3_control/clean
+
+# Convenience name for "preinstall" pass in the directory.
+control/so3_control/preinstall:
+
+.PHONY : control/so3_control/preinstall
+
+#=============================================================================
+# Target rules for target control/so3_control/CMakeFiles/so3_control.dir
+
+# All Build rule for target.
+control/so3_control/CMakeFiles/so3_control.dir/all: control/uav_state/CMakeFiles/uav_state.dir/all
+	$(MAKE) -f control/so3_control/CMakeFiles/so3_control.dir/build.make control/so3_control/CMakeFiles/so3_control.dir/depend
+	$(MAKE) -f control/so3_control/CMakeFiles/so3_control.dir/build.make control/so3_control/CMakeFiles/so3_control.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=29,30 "Built target so3_control"
+.PHONY : control/so3_control/CMakeFiles/so3_control.dir/all
+
+# Include target in all.
+all: control/so3_control/CMakeFiles/so3_control.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+control/so3_control/CMakeFiles/so3_control.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sw/homo_geo/build/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 control/so3_control/CMakeFiles/so3_control.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sw/homo_geo/build/CMakeFiles 0
+.PHONY : control/so3_control/CMakeFiles/so3_control.dir/rule
+
+# Convenience name for target.
+so3_control: control/so3_control/CMakeFiles/so3_control.dir/rule
+
+.PHONY : so3_control
+
+# clean rule for target.
+control/so3_control/CMakeFiles/so3_control.dir/clean:
+	$(MAKE) -f control/so3_control/CMakeFiles/so3_control.dir/build.make control/so3_control/CMakeFiles/so3_control.dir/clean
+.PHONY : control/so3_control/CMakeFiles/so3_control.dir/clean
+
+# clean rule for target.
+clean: control/so3_control/CMakeFiles/so3_control.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Directory level rules for directory homography_geometric_control
 
 # Convenience name for "all" pass in the directory.
 homography_geometric_control/all: homography_geometric_control/CMakeFiles/homo_geo.dir/all
 homography_geometric_control/all: homography_geometric_control/CMakeFiles/homography_geometric_control.dir/all
-homography_geometric_control/all: homography_geometric_control/CMakeFiles/homography_from_pose.dir/all
+homography_geometric_control/all: homography_geometric_control/CMakeFiles/homography_publish.dir/all
 
 .PHONY : homography_geometric_control/all
 
 # Convenience name for "clean" pass in the directory.
 homography_geometric_control/clean: homography_geometric_control/CMakeFiles/homo_geo.dir/clean
 homography_geometric_control/clean: homography_geometric_control/CMakeFiles/homography_geometric_control.dir/clean
-homography_geometric_control/clean: homography_geometric_control/CMakeFiles/homography_from_pose.dir/clean
+homography_geometric_control/clean: homography_geometric_control/CMakeFiles/homography_publish.dir/clean
 
 .PHONY : homography_geometric_control/clean
 
@@ -1674,6 +1729,7 @@ homography_geometric_control/preinstall:
 # All Build rule for target.
 homography_geometric_control/CMakeFiles/homo_geo.dir/all: control/uav_state/CMakeFiles/uav_state.dir/all
 homography_geometric_control/CMakeFiles/homo_geo.dir/all: control/mavros_interaction/CMakeFiles/mavros_interaction.dir/all
+homography_geometric_control/CMakeFiles/homo_geo.dir/all: control/so3_control/CMakeFiles/so3_control.dir/all
 homography_geometric_control/CMakeFiles/homo_geo.dir/all: homography_geometric_control/CMakeFiles/homography_geometric_control.dir/all
 	$(MAKE) -f homography_geometric_control/CMakeFiles/homo_geo.dir/build.make homography_geometric_control/CMakeFiles/homo_geo.dir/depend
 	$(MAKE) -f homography_geometric_control/CMakeFiles/homo_geo.dir/build.make homography_geometric_control/CMakeFiles/homo_geo.dir/build
@@ -1687,7 +1743,7 @@ all: homography_geometric_control/CMakeFiles/homo_geo.dir/all
 
 # Build rule for subdir invocation for target.
 homography_geometric_control/CMakeFiles/homo_geo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sw/homo_geo/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sw/homo_geo/build/CMakeFiles 10
 	$(MAKE) -f CMakeFiles/Makefile2 homography_geometric_control/CMakeFiles/homo_geo.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/sw/homo_geo/build/CMakeFiles 0
 .PHONY : homography_geometric_control/CMakeFiles/homo_geo.dir/rule
@@ -1714,7 +1770,7 @@ clean: homography_geometric_control/CMakeFiles/homo_geo.dir/clean
 homography_geometric_control/CMakeFiles/homography_geometric_control.dir/all:
 	$(MAKE) -f homography_geometric_control/CMakeFiles/homography_geometric_control.dir/build.make homography_geometric_control/CMakeFiles/homography_geometric_control.dir/depend
 	$(MAKE) -f homography_geometric_control/CMakeFiles/homography_geometric_control.dir/build.make homography_geometric_control/CMakeFiles/homography_geometric_control.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=25,26 "Built target homography_geometric_control"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=23,24 "Built target homography_geometric_control"
 .PHONY : homography_geometric_control/CMakeFiles/homography_geometric_control.dir/all
 
 # Include target in all.
@@ -1745,41 +1801,42 @@ clean: homography_geometric_control/CMakeFiles/homography_geometric_control.dir/
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target homography_geometric_control/CMakeFiles/homography_from_pose.dir
+# Target rules for target homography_geometric_control/CMakeFiles/homography_publish.dir
 
 # All Build rule for target.
-homography_geometric_control/CMakeFiles/homography_from_pose.dir/all: control/uav_state/CMakeFiles/uav_state.dir/all
-homography_geometric_control/CMakeFiles/homography_from_pose.dir/all: control/mavros_interaction/CMakeFiles/mavros_interaction.dir/all
-homography_geometric_control/CMakeFiles/homography_from_pose.dir/all: homography_geometric_control/CMakeFiles/homography_geometric_control.dir/all
-	$(MAKE) -f homography_geometric_control/CMakeFiles/homography_from_pose.dir/build.make homography_geometric_control/CMakeFiles/homography_from_pose.dir/depend
-	$(MAKE) -f homography_geometric_control/CMakeFiles/homography_from_pose.dir/build.make homography_geometric_control/CMakeFiles/homography_from_pose.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=23,24 "Built target homography_from_pose"
-.PHONY : homography_geometric_control/CMakeFiles/homography_from_pose.dir/all
+homography_geometric_control/CMakeFiles/homography_publish.dir/all: control/uav_state/CMakeFiles/uav_state.dir/all
+homography_geometric_control/CMakeFiles/homography_publish.dir/all: control/mavros_interaction/CMakeFiles/mavros_interaction.dir/all
+homography_geometric_control/CMakeFiles/homography_publish.dir/all: control/so3_control/CMakeFiles/so3_control.dir/all
+homography_geometric_control/CMakeFiles/homography_publish.dir/all: homography_geometric_control/CMakeFiles/homography_geometric_control.dir/all
+	$(MAKE) -f homography_geometric_control/CMakeFiles/homography_publish.dir/build.make homography_geometric_control/CMakeFiles/homography_publish.dir/depend
+	$(MAKE) -f homography_geometric_control/CMakeFiles/homography_publish.dir/build.make homography_geometric_control/CMakeFiles/homography_publish.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sw/homo_geo/build/CMakeFiles --progress-num=25,26 "Built target homography_publish"
+.PHONY : homography_geometric_control/CMakeFiles/homography_publish.dir/all
 
 # Include target in all.
-all: homography_geometric_control/CMakeFiles/homography_from_pose.dir/all
+all: homography_geometric_control/CMakeFiles/homography_publish.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-homography_geometric_control/CMakeFiles/homography_from_pose.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sw/homo_geo/build/CMakeFiles 8
-	$(MAKE) -f CMakeFiles/Makefile2 homography_geometric_control/CMakeFiles/homography_from_pose.dir/all
+homography_geometric_control/CMakeFiles/homography_publish.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sw/homo_geo/build/CMakeFiles 10
+	$(MAKE) -f CMakeFiles/Makefile2 homography_geometric_control/CMakeFiles/homography_publish.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/sw/homo_geo/build/CMakeFiles 0
-.PHONY : homography_geometric_control/CMakeFiles/homography_from_pose.dir/rule
+.PHONY : homography_geometric_control/CMakeFiles/homography_publish.dir/rule
 
 # Convenience name for target.
-homography_from_pose: homography_geometric_control/CMakeFiles/homography_from_pose.dir/rule
+homography_publish: homography_geometric_control/CMakeFiles/homography_publish.dir/rule
 
-.PHONY : homography_from_pose
-
-# clean rule for target.
-homography_geometric_control/CMakeFiles/homography_from_pose.dir/clean:
-	$(MAKE) -f homography_geometric_control/CMakeFiles/homography_from_pose.dir/build.make homography_geometric_control/CMakeFiles/homography_from_pose.dir/clean
-.PHONY : homography_geometric_control/CMakeFiles/homography_from_pose.dir/clean
+.PHONY : homography_publish
 
 # clean rule for target.
-clean: homography_geometric_control/CMakeFiles/homography_from_pose.dir/clean
+homography_geometric_control/CMakeFiles/homography_publish.dir/clean:
+	$(MAKE) -f homography_geometric_control/CMakeFiles/homography_publish.dir/build.make homography_geometric_control/CMakeFiles/homography_publish.dir/clean
+.PHONY : homography_geometric_control/CMakeFiles/homography_publish.dir/clean
+
+# clean rule for target.
+clean: homography_geometric_control/CMakeFiles/homography_publish.dir/clean
 
 .PHONY : clean
 

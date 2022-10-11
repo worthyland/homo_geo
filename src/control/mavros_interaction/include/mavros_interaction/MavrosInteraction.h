@@ -22,10 +22,10 @@ class MavrosInteraction
 private:
     /* data */
     ros::NodeHandle nh_;
-    ros::NodeHandle nhPrivate_;
+    ros::NodeHandle nhParam_;
     /* 话题订阅 */
     ros::Subscriber posSub;//位置信息 世界框架下z轴向上为正 
-    ros::Subscriber imuSub;//获取IMU的信息 base_link 话题名称：mavros/imu/data 更新角速度/加速度（Z轴为9.8，加速度的值）/    四元数 相对于世界坐标系
+    ros::Subscriber imuSub;//获取IMU的信息 base_link 话题名称：mavros/imu/data 更新角速度（相对于机体坐标系）/加速度（相对于机体坐标系）（Z轴为9.8，加速度的值）/    四元数 相对于世界坐标系
     ros::Subscriber velocityBodySub;//相对于机体坐标下速度,角速度 机体框架z轴向上为正 base_link 话题名称：mavros/local_position/velocity_body 
     ros::Subscriber velocityLocalSub;//相对与世界坐标下速度，角速度 世界框架z轴向上为正 base_link 话题名称：mavros/local_position/velocity_local
     ros::Subscriber px4ControlStateSub;
@@ -40,7 +40,7 @@ private:
     Quadrotor uav_;
     mavros_msgs::State currentControlMode_;
 
-    
+
 private:
     virtual void PoseCallback(const geometry_msgs::PoseStamped::ConstPtr& msg);
     virtual void IMUCallback(const sensor_msgs::Imu::ConstPtr& msg);
@@ -50,12 +50,14 @@ private:
 
 public:
     MavrosInteraction();
-    MavrosInteraction(const ros::NodeHandle& nh);
+    MavrosInteraction(const ros::NodeHandle& nh,const ros::NodeHandle& nhParam);
     ~MavrosInteraction();
 
     void ShowUavState(int num) const;
-    const Quadrotor::state& GetState(void)const;
 
+    const Quadrotor::state& GetState()const;
+    const Quadrotor& GetUav()const;
+    
 };
 
 

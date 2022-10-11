@@ -90,6 +90,8 @@ homo_geo_EXTERNAL_OBJECTS =
 
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: homography_geometric_control/CMakeFiles/homo_geo.dir/test/homo_geo.cpp.o
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: homography_geometric_control/CMakeFiles/homo_geo.dir/build.make
+/home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /home/sw/homo_geo/devel/lib/libmavros_interaction.so
+/home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /home/sw/homo_geo/devel/lib/libso3_control.so
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /opt/ros/melodic/lib/libroscpp.so
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /opt/ros/melodic/lib/librosconsole.so
@@ -98,7 +100,6 @@ homo_geo_EXTERNAL_OBJECTS =
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /usr/lib/x86_64-linux-gnu/libboost_regex.so
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /opt/ros/melodic/lib/libxmlrpcpp.so
-/home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /home/sw/homo_geo/devel/lib/libmavros_interaction.so
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /home/sw/homo_geo/devel/lib/libuav_state.so
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /opt/ros/melodic/lib/libroscpp_serialization.so
 /home/sw/homo_geo/devel/lib/homography_geometric_control/homo_geo: /opt/ros/melodic/lib/librostime.so

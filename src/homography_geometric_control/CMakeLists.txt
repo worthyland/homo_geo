@@ -16,7 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
   #自己写的库
   mavros_interaction
   uav_state
-
+  so3_control
   #自己定义的消息格式
   homo_msgs
 )
@@ -27,7 +27,7 @@ include_directories(${EIGEN3_INCLUDE_DIR})
 catkin_package(
   #INCLUDE_DIRS include
 #  LIBRARIES homography_geometric_control
-  CATKIN_DEPENDS roscpp rospy std_msgs uav_state mavros_interaction
+  CATKIN_DEPENDS roscpp rospy std_msgs uav_state mavros_interaction so3_control
 #  DEPENDS system_lib
 )
 
@@ -53,8 +53,8 @@ ${catkin_LIBRARIES}
 ${PROJECT_NAME}
 )
 
-add_executable(homography_from_pose test/homography_from_pose.cpp)
-target_link_libraries(homography_from_pose 
+add_executable(homography_publish test/homography_publish.cpp)
+target_link_libraries(homography_publish 
 ${catkin_LIBRARIES}
 ${PROJECT_NAME}
 )

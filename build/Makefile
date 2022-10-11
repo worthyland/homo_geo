@@ -740,6 +740,19 @@ mavros_interaction/fast:
 .PHONY : mavros_interaction/fast
 
 #=============================================================================
+# Target rules for targets named so3_control
+
+# Build rule for target.
+so3_control: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 so3_control
+.PHONY : so3_control
+
+# fast build rule for target.
+so3_control/fast:
+	$(MAKE) -f control/so3_control/CMakeFiles/so3_control.dir/build.make control/so3_control/CMakeFiles/so3_control.dir/build
+.PHONY : so3_control/fast
+
+#=============================================================================
 # Target rules for targets named homo_geo
 
 # Build rule for target.
@@ -766,17 +779,17 @@ homography_geometric_control/fast:
 .PHONY : homography_geometric_control/fast
 
 #=============================================================================
-# Target rules for targets named homography_from_pose
+# Target rules for targets named homography_publish
 
 # Build rule for target.
-homography_from_pose: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 homography_from_pose
-.PHONY : homography_from_pose
+homography_publish: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 homography_publish
+.PHONY : homography_publish
 
 # fast build rule for target.
-homography_from_pose/fast:
-	$(MAKE) -f homography_geometric_control/CMakeFiles/homography_from_pose.dir/build.make homography_geometric_control/CMakeFiles/homography_from_pose.dir/build
-.PHONY : homography_from_pose/fast
+homography_publish/fast:
+	$(MAKE) -f homography_geometric_control/CMakeFiles/homography_publish.dir/build.make homography_geometric_control/CMakeFiles/homography_publish.dir/build
+.PHONY : homography_publish/fast
 
 # Help Target
 help:
@@ -835,9 +848,10 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... MavrosInteractionTest"
 	@echo "... mavros_interaction"
+	@echo "... so3_control"
 	@echo "... homo_geo"
 	@echo "... homography_geometric_control"
-	@echo "... homography_from_pose"
+	@echo "... homography_publish"
 .PHONY : help
 
 

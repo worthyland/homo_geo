@@ -22,6 +22,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/sw/homo_geo/devel/include"
   "/home/sw/homo_geo/src/control/mavros_interaction/include"
   "/home/sw/homo_geo/src/control/uav_state/include"
+  "/home/sw/homo_geo/src/control/so3_control/include"
   "/opt/ros/melodic/include"
   "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )
@@ -29,6 +30,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/sw/homo_geo/build/control/mavros_interaction/CMakeFiles/mavros_interaction.dir/DependInfo.cmake"
+  "/home/sw/homo_geo/build/control/so3_control/CMakeFiles/so3_control.dir/DependInfo.cmake"
   "/home/sw/homo_geo/build/control/uav_state/CMakeFiles/uav_state.dir/DependInfo.cmake"
   "/home/sw/homo_geo/build/homography_geometric_control/CMakeFiles/homography_geometric_control.dir/DependInfo.cmake"
   )

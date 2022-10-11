@@ -1,2 +1,2 @@
-control/mavros_interaction:control/uav_state:homo_msgs:homography_geometric_control
+control/mavros_interaction:control/so3_control:control/uav_state:homo_msgs:homography_geometric_control
 -DCATKIN_DEVEL_PREFIX=/home/sw/homo_geo/devel -DCMAKE_INSTALL_PREFIX=/home/sw/homo_geo/install -G Unix Makefiles

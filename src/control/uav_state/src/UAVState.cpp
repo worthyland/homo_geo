@@ -144,6 +144,28 @@ Quadrotor::GetVel(void) const
     return state_.vel;
 }
 
+void 
+Quadrotor::SetR(const Eigen::Matrix3d& val)
+{
+    state_.R = val;
+}
+
+const Eigen::Matrix3d& 
+Quadrotor::GetR(void) const
+{
+    return state_.R;
+}
+
+void 
+Quadrotor::SetEulerAngle(const Eigen::Vector3d& val)
+{
+    state_.eulerAngle = val;
+}
+const Eigen::Vector3d& 
+Quadrotor::GetEulerAngle(void) const
+{
+    return state_.eulerAngle;
+}
 
 const Quadrotor::state& 
 Quadrotor::GetState(void) const
@@ -152,10 +174,35 @@ Quadrotor::GetState(void) const
 }
 
 
+const Eigen::Vector3d
+Quadrotor::QuaternionToEulerAngles(const Eigen::Quaterniond& q) const
+{
+
+    Eigen::Vector3d angles;
+ 
+    // roll (x-axis rotation)
+    double sinr_cosp = 2 * (q.w() * q.x() + q.y() * q.z());
+    double cosr_cosp = 1 - 2 * (q.x() * q.x() + q.y() * q.y());
+    angles(2) = std::atan2(sinr_cosp, cosr_cosp);
+    // pitch (y-axis rotation)
+    double sinp = 2 * (q.w() * q.y() - q.z() * q.x());
+    if (std::abs(sinp) >= 1)
+        angles(1) = std::copysign(M_PI / 2, sinp); // use 90 degrees if out of range
+    else
+        angles(1) = std::asin(sinp);
+
+    // yaw (z-axis rotation)
+    double siny_cosp = 2 * (q.w() * q.z() + q.x() * q.y());
+    double cosy_cosp = 1 - 2 * (q.y() * q.y() + q.z() * q.z());
+    angles(0) = std::atan2(siny_cosp, cosy_cosp);
+ 
+
+    return angles;
+}
 
 void Quadrotor::ShowState(int num) const
 {
-
+    std::cout << "------------------状态量显示---------------- " <<std::endl;
     ShowVal("位置pos:",state_.pos,num);
     ShowVal("速度vel:",state_.vel,num);
     ShowVal("加速度acc:",state_.acc,num);
@@ -164,27 +211,30 @@ void Quadrotor::ShowState(int num) const
     ShowVal("角速度omega:",state_.omega,num);
     ShowVal("旋转矩阵R:",state_.R,num);
     ShowVal("四元数orientation:",state_.orientation,num);
+
 }
 
 
-
-
-inline void Quadrotor::ShowVal(const std::string& str,const Eigen::Vector3d& val,int num) const
+void 
+Quadrotor::ShowVal(const std::string& str,const Eigen::Vector3d& val,int num) const
 {
     std::cout << str <<" ";
     std::cout<<std::fixed<< std::setprecision(num)<< val(0)<<","<<val(1)<<","<<val(2)<<","<<std::endl;
 }
 
-inline void Quadrotor::ShowVal(const std::string& str,const Eigen::Matrix3d& val,int num) const
+void 
+Quadrotor::ShowVal(const std::string& str,const Eigen::Matrix3d& val,int num) const
 {
     std::cout << str <<std::endl;
     std::cout<<std::fixed<< std::setprecision(num)<< val<<std::endl;
 }
 
-inline void Quadrotor::ShowVal(const std::string& str,const Eigen::Quaterniond& val,int num) const
+void 
+Quadrotor::ShowVal(const std::string& str,const Eigen::Quaterniond& val,int num) const
 {
     std::cout << str <<" ";
     std::cout<<std::fixed<< std::setprecision(num)<< val.w()<<","<<val.x()<<","
                                                 <<val.y()<<","<<val.z()<<std::endl;
 }
+
 }

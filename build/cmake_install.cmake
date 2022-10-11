@@ -134,6 +134,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/sw/homo_geo/build/homo_msgs/cmake_install.cmake")
   include("/home/sw/homo_geo/build/control/uav_state/cmake_install.cmake")
   include("/home/sw/homo_geo/build/control/mavros_interaction/cmake_install.cmake")
+  include("/home/sw/homo_geo/build/control/so3_control/cmake_install.cmake")
   include("/home/sw/homo_geo/build/homography_geometric_control/cmake_install.cmake")
 
 endif()

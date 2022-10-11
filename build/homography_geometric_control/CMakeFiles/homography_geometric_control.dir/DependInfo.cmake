@@ -22,6 +22,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/sw/homo_geo/devel/include"
   "/home/sw/homo_geo/src/control/mavros_interaction/include"
   "/home/sw/homo_geo/src/control/uav_state/include"
+  "/home/sw/homo_geo/src/control/so3_control/include"
   "/opt/ros/melodic/include"
   "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )

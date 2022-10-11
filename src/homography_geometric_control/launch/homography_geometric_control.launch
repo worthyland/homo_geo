@@ -1,0 +1,7 @@
+<launch>
+
+ <node pkg="homography_geometric_control" name="homo_geo" type="homo_geo" output="screen">
+    <param name="Control_rate" value="200.0"/>
+ </node>
+
+</launch>
