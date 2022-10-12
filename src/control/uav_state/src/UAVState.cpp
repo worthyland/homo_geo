@@ -235,46 +235,46 @@ Quadrotor::Vector3dFrameTransform(const Eigen::Matrix3d& Left)
 void Quadrotor::ShowState(int num) const
 {
     std::cout << "------------------状态量显示---------------- " <<std::endl;
-    ShowVal("质量mass",state_.mass,num);
-    ShowVal("重力加速度g",state_.g,num);
-    ShowVal("位置pos",state_.pos,num);
-    ShowVal("速度vel",state_.vel,num);
-    ShowVal("加速度acc",state_.acc,num);
-    ShowVal("加加速度jerk",state_.jerk,num);
-    ShowVal("欧拉角eulerAngle",state_.eulerAngle,num);
-    ShowVal("角速度omega",state_.omega,num);
-    ShowVal("旋转矩阵R",state_.R,num);
-    ShowVal("四元数orientation",state_.orientation,num);
+    Common::ShowVal("质量mass",state_.mass,num);
+    Common::ShowVal("重力加速度g",state_.g,num);
+    Common::ShowVal("位置pos",state_.pos,num);
+    Common::ShowVal("速度vel",state_.vel,num);
+    Common::ShowVal("加速度acc",state_.acc,num);
+    Common::ShowVal("加加速度jerk",state_.jerk,num);
+    Common::ShowVal("欧拉角eulerAngle",state_.eulerAngle,num);
+    Common::ShowVal("角速度omega",state_.omega,num);
+    Common::ShowVal("旋转矩阵R",state_.R,num);
+    Common::ShowVal("四元数orientation",state_.orientation,num);
 
 }
 
 
-void 
-Quadrotor::ShowVal(const std::string& str,const Eigen::Vector3d& val,int num) const
-{
-    std::cout << str <<":";
-    std::cout<<std::fixed<< std::setprecision(num)<< val(0)<<","<<val(1)<<","<<val(2)<<","<<std::endl;
-}
+// void 
+// Quadrotor::ShowVal(const std::string& str,const Eigen::Vector3d& val,int num) const
+// {
+//     std::cout << str <<":";
+//     std::cout<<std::fixed<< std::setprecision(num)<< val(0)<<","<<val(1)<<","<<val(2)<<","<<std::endl;
+// }
 
-void 
-Quadrotor::ShowVal(const std::string& str,const Eigen::Matrix3d& val,int num) const
-{
-    std::cout << str << ":" << std::endl;
-    std::cout<<std::fixed<< std::setprecision(num)<< val<<std::endl;
-}
+// void 
+// Quadrotor::ShowVal(const std::string& str,const Eigen::Matrix3d& val,int num) const
+// {
+//     std::cout << str << ":" << std::endl;
+//     std::cout<<std::fixed<< std::setprecision(num)<< val<<std::endl;
+// }
 
-void 
-Quadrotor::ShowVal(const std::string& str,const Eigen::Quaterniond& val,int num) const
-{
-    std::cout << str <<":";
-    std::cout<<std::fixed<< std::setprecision(num)<< val.w()<<","<<val.x()<<","
-                                                <<val.y()<<","<<val.z()<<std::endl;
-}
+// void 
+// Quadrotor::ShowVal(const std::string& str,const Eigen::Quaterniond& val,int num) const
+// {
+//     std::cout << str <<":";
+//     std::cout<<std::fixed<< std::setprecision(num)<< val.w()<<","<<val.x()<<","
+//                                                 <<val.y()<<","<<val.z()<<std::endl;
+// }
 
-void 
-Quadrotor::ShowVal(const std::string& str,const double& val,int num) const
-{
-    std::cout << str <<":";
-    std::cout<<std::fixed<< std::setprecision(num)<< val <<std::endl;
-}
+// void 
+// Quadrotor::ShowVal(const std::string& str,const double& val,int num) const
+// {
+//     std::cout << str <<":";
+//     std::cout<<std::fixed<< std::setprecision(num)<< val <<std::endl;
+// }
 }

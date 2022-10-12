@@ -28,7 +28,7 @@ private:
     ros::NodeHandle nh_;
     ros::NodeHandle nhParam_;
     ros::Subscriber homographySub;
-    ControlGain controlgain_;
+    ControlGain controlGain_;
     Eigen::Matrix3d homography_,homographyVirtual_;
     Control::Quadrotor curUavState_;//当前的无人机状态 basened相对refned
     /*    curUavState_ 内部变量
@@ -48,6 +48,8 @@ private:
     Eigen::Vector3d e1_,e2_;
     Eigen::Vector3d FVitual_;
     Eigen::Matrix3d RDesired_;
+    Eigen::Matrix3d dot_RDesired_;
+    Eigen::Vector3d omegaDesired_;
     double thrust_;
     //以下变量为常量
     Eigen::Vector3d mStar_;
@@ -71,9 +73,11 @@ public:
     const Eigen::Vector3d UpdateFVitual();
     const double UpdateThrust();
     const Eigen::Matrix3d UpdateRotationDesired();
+    const Eigen::Vector3d UpdateOmegaDesired();
 
     const Control::Quadrotor& GetQuadrotor()const;
     const Eigen::Matrix3d& GetRDesired()const;
+    const Eigen::Vector3d& GetOmegaDesired()const;
     void ShowInternal(int num = 5) const;
 };
 

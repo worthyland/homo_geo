@@ -61,7 +61,7 @@ MavrosInteraction::IMUCallback(const sensor_msgs::Imu::ConstPtr& msg)
     Eigen::Quaterniond  orientationTmp(msg->orientation.w,msg->orientation.x,
                                         msg->orientation.y,msg->orientation.z); 
     uav_.SetOrientation(orientationTmp);
-    // uav_.ShowVal("sdaa",orientationTmp,5);
+
     //更新旋转矩阵
     Eigen::Matrix3d RTmp(orientationTmp.toRotationMatrix());
     uav_.SetR(RTmp);
@@ -70,7 +70,7 @@ MavrosInteraction::IMUCallback(const sensor_msgs::Imu::ConstPtr& msg)
     Eigen::Vector3d eulerAngle = Eigen::Vector3d::Zero();
     eulerAngle = uav_.QuaternionToEulerAngles(orientationTmp);
     uav_.SetEulerAngle(eulerAngle);
-    //  uav_.ShowVal("sdasda",eulerAngle,4);
+
 }
 
 void

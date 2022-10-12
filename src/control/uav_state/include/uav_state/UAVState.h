@@ -66,10 +66,10 @@ public:
 
 
     void ShowState(int num=5) const;//显示到小数点后5位  由num设置
-    void ShowVal(const std::string& str,const Eigen::Vector3d& val,int num = 5) const;
-    void ShowVal(const std::string& str,const Eigen::Matrix3d& val,int num = 5) const;
-    void ShowVal(const std::string& str,const Eigen::Quaterniond& val,int num = 5) const;
-    void ShowVal(const std::string& str,const double& val,int num = 5) const;    
+    // void ShowVal(const std::string& str,const Eigen::Vector3d& val,int num = 5) const;
+    // void ShowVal(const std::string& str,const Eigen::Matrix3d& val,int num = 5) const;
+    // void ShowVal(const std::string& str,const Eigen::Quaterniond& val,int num = 5) const;
+    // void ShowVal(const std::string& str,const double& val,int num = 5) const;    
 };
 
 
