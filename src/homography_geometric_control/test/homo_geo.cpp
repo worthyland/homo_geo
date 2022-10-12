@@ -16,15 +16,16 @@ int main(int argc, char *argv[]){
 
     MavrosInteraction uavInfo(nh,nhParam);//与mavros交互，获取无人机状态 ref_X_base
     HomographyGeometric outLoop(nh,nhParam);
-    SO3Control controllor(nh,nhParam);
+    SO3Control attitudeControllor(nh,nhParam);
     // double ControlRate;
     // nhParam.param("Control_rate",ControlRate,60.0);
-    ros::Rate rate(controllor.GetControlRate());
+    ros::Rate rate(attitudeControllor.GetControlRate());
     while(ros::ok()){
 
         //cout << controllor.GetControlRate() <<endl;
         //uavInfo.ShowUavState(5);
-        outLoop(uavInfo.GetUav());
+        outLoop(uavInfo.GetQuadrotor());
+        attitudeControllor(outLoop.GetRDesired(),outLoop.GetQuadrotor());
         ros::spinOnce();
         rate.sleep();
     }

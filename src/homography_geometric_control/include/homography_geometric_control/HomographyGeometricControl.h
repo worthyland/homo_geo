@@ -19,6 +19,8 @@ public:
 struct ControlGain
 {
     /* data */
+    double c;
+    Eigen::Matrix3d Kv;
 
 };
 private:
@@ -27,26 +29,35 @@ private:
     ros::NodeHandle nhParam_;
     ros::Subscriber homographySub;
     ControlGain controlgain_;
-    Eigen::Matrix3d homography_;
-    Control::Quadrotor curUavState_;//当前的无人机状态
+    Eigen::Matrix3d homography_,homographyVirtual_;
+    Control::Quadrotor curUavState_;//当前的无人机状态 basened相对refned
     /*    curUavState_ 内部变量
-    *Eigen::Vector3d pos;//位置
+    *Eigen::Vector3d pos;//位置 ->
     *Eigen::Vector3d vel;//速度 ->需要相对于机体nedzuo坐标系下的速度
-    *Eigen::Vector3d acc;//加速度 
-    *Eigen::Vector3d jerk;//加加速度    
+    *Eigen::Vector3d acc;//加速度 ->
+    *Eigen::Vector3d jerk;//加加速度 ->
     *Eigen::Vector3d eulerAngle;//角度  欧拉角
     *Eigen::Vector3d omega;//角速度 默认为相对于机体nedzuo坐标系下的速度
     *Eigen::Matrix3d R;//旋转矩阵->需要相对于世界nedzuo坐标系下的旋转矩阵
-    *Eigen::Quaterniond orientation;//四元数 
+    *Eigen::Quaterniond orientation;//四元数 ->
     *double mass;//质量
-    *double g;//重力加速度
+    *double g;//重力加速度大小
     *Eigen::Matrix3d J;//惯性矩阵；
      */
+    Eigen::Matrix3d RZ_,RY_,RX_;//
+    Eigen::Vector3d e1_,e2_;
+    Eigen::Vector3d FVitual_;
+    Eigen::Matrix3d RDesired_;
+    double thrust_;
+    //以下变量为常量
+    Eigen::Vector3d mStar_;
+    Eigen::Vector3d axisZ_;
+    double yawDesired_;
+    Eigen::Vector3d b1c_;
     bool homographyCallbackState;
 
     virtual void HomographyCallback(const homo_msgs::HomographyResult::ConstPtr& msg);
-    void UpdateCurUavState(const Control::Quadrotor& val);
-    const Eigen::Vector3d& GetError1(const Eigen::Matrix3d& homography);
+
     
 
 public:
@@ -54,8 +65,16 @@ public:
     ~HomographyGeometric();
 
     void operator() (const Control::Quadrotor& curUavState);
+    void SetCurUavState(const Control::Quadrotor& val);
+    const Eigen::Vector3d UpdateError1();
+    const Eigen::Vector3d UpdateError2();
+    const Eigen::Vector3d UpdateFVitual();
+    const double UpdateThrust();
+    const Eigen::Matrix3d UpdateRotationDesired();
 
-    Control::Quadrotor FrameTransform(const Control::Quadrotor& curUavState);//将世界框架的state状态量进行变换，变换到ned坐标系下
+    const Control::Quadrotor& GetQuadrotor()const;
+    const Eigen::Matrix3d& GetRDesired()const;
+    void ShowInternal(int num = 5) const;
 };
 
 

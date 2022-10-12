@@ -24,4 +24,13 @@ SO3Control::GetControlRate() const
 {
     return controlRate_;
 }
+
+
+void 
+SO3Control::operator() (const Eigen::Matrix3d& RDesired,const Control::Quadrotor& curUavState)
+{
+    SetState(curUavState);
+    curUavState_.ShowState();
+}
+
 } // namespace Control

@@ -1,7 +1,13 @@
 <launch>
 
  <node pkg="homography_geometric_control" name="homo_geo" type="homo_geo" output="screen">
+    <param name="Mass" value="1.5"/>
+    <param name="Gravity" value="9.80665"/>
     <param name="Control_rate" value="200.0"/>
+    <param name="ControlGain/Kvx" value="1.5"/>
+    <param name="ControlGain/Kvy" value="1.5"/>
+    <param name="ControlGain/Kvz" value="1.5"/>
+
  </node>
 
 </launch>

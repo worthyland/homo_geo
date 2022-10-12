@@ -56,7 +56,7 @@ public:
     void ShowUavState(int num) const;
 
     const Quadrotor::state& GetState()const;
-    const Quadrotor& GetUav()const;
+    const Quadrotor& GetQuadrotor()const;
     
 };
 

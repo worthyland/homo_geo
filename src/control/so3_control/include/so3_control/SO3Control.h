@@ -33,6 +33,7 @@ public:
     void SetState(const Quadrotor& val);
     const double& GetControlRate() const;
 
+    void operator() (const Eigen::Matrix3d& RDesired,const Control::Quadrotor& curUavState);
     
 };
 

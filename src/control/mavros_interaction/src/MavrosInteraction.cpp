@@ -10,6 +10,12 @@ MavrosInteraction::MavrosInteraction()
 
 MavrosInteraction::MavrosInteraction(const ros::NodeHandle& nh,const ros::NodeHandle& nhParam):nh_(nh),nhParam_(nhParam)
 {
+    double mass;
+    nhParam_.param("Mass",mass,1.0);
+    uav_.SetMass(mass);
+    double g;
+    nhParam_.param("Gravity",g,9.80665);
+    uav_.SetGravity(g);
     posSub = nh_.subscribe("mavros/local_position/pose",1,&MavrosInteraction::PoseCallback,this);
     imuSub = nh_.subscribe("mavros/imu/data",1,&MavrosInteraction::IMUCallback,this);
     velocityBodySub = nh_.subscribe("mavros/local_position/velocity_body",1,&MavrosInteraction::VelocityBodyCallback,this);
@@ -20,6 +26,8 @@ MavrosInteraction::MavrosInteraction(const ros::NodeHandle& nh,const ros::NodeHa
     imuCallbackState = false;
     velocityBodyCallbackState = false;
     velocityLocalCallbackState = false;
+
+
 } 
 
 
@@ -104,7 +112,7 @@ MavrosInteraction::GetState() const
 }
 
 const Quadrotor& 
-MavrosInteraction::GetUav()const
+MavrosInteraction::GetQuadrotor()const
 {
     return uav_;
 }

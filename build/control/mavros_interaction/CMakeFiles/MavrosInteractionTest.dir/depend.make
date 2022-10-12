@@ -3,6 +3,7 @@
 
 control/mavros_interaction/CMakeFiles/MavrosInteractionTest.dir/src/MavrosInteractionTest.cpp.o: /home/sw/homo_geo/src/control/mavros_interaction/include/mavros_interaction/MavrosInteraction.h
 control/mavros_interaction/CMakeFiles/MavrosInteractionTest.dir/src/MavrosInteractionTest.cpp.o: /home/sw/homo_geo/src/control/mavros_interaction/src/MavrosInteractionTest.cpp
+control/mavros_interaction/CMakeFiles/MavrosInteractionTest.dir/src/MavrosInteractionTest.cpp.o: /home/sw/homo_geo/src/control/uav_state/include/uav_state/Common.h
 control/mavros_interaction/CMakeFiles/MavrosInteractionTest.dir/src/MavrosInteractionTest.cpp.o: /home/sw/homo_geo/src/control/uav_state/include/uav_state/UAVState.h
 control/mavros_interaction/CMakeFiles/MavrosInteractionTest.dir/src/MavrosInteractionTest.cpp.o: /opt/ros/melodic/include/geometry_msgs/Point.h
 control/mavros_interaction/CMakeFiles/MavrosInteractionTest.dir/src/MavrosInteractionTest.cpp.o: /opt/ros/melodic/include/geometry_msgs/Pose.h

@@ -3,6 +3,7 @@
 
 homography_geometric_control/CMakeFiles/homography_publish.dir/test/homography_publish.cpp.o: /home/sw/homo_geo/devel/include/homo_msgs/HomographyResult.h
 homography_geometric_control/CMakeFiles/homography_publish.dir/test/homography_publish.cpp.o: /home/sw/homo_geo/src/control/mavros_interaction/include/mavros_interaction/MavrosInteraction.h
+homography_geometric_control/CMakeFiles/homography_publish.dir/test/homography_publish.cpp.o: /home/sw/homo_geo/src/control/uav_state/include/uav_state/Common.h
 homography_geometric_control/CMakeFiles/homography_publish.dir/test/homography_publish.cpp.o: /home/sw/homo_geo/src/control/uav_state/include/uav_state/UAVState.h
 homography_geometric_control/CMakeFiles/homography_publish.dir/test/homography_publish.cpp.o: /home/sw/homo_geo/src/homography_geometric_control/test/homography_publish.cpp
 homography_geometric_control/CMakeFiles/homography_publish.dir/test/homography_publish.cpp.o: /opt/ros/melodic/include/geometry_msgs/Point.h

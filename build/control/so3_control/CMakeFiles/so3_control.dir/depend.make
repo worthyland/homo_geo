@@ -3,6 +3,7 @@
 
 control/so3_control/CMakeFiles/so3_control.dir/src/SO3Control.cpp.o: /home/sw/homo_geo/src/control/so3_control/include/so3_control/SO3Control.h
 control/so3_control/CMakeFiles/so3_control.dir/src/SO3Control.cpp.o: /home/sw/homo_geo/src/control/so3_control/src/SO3Control.cpp
+control/so3_control/CMakeFiles/so3_control.dir/src/SO3Control.cpp.o: /home/sw/homo_geo/src/control/uav_state/include/uav_state/Common.h
 control/so3_control/CMakeFiles/so3_control.dir/src/SO3Control.cpp.o: /home/sw/homo_geo/src/control/uav_state/include/uav_state/UAVState.h
 control/so3_control/CMakeFiles/so3_control.dir/src/SO3Control.cpp.o: /opt/ros/melodic/include/ros/advertise_options.h
 control/so3_control/CMakeFiles/so3_control.dir/src/SO3Control.cpp.o: /opt/ros/melodic/include/ros/advertise_service_options.h

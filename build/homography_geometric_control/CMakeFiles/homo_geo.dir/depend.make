@@ -4,6 +4,7 @@
 homography_geometric_control/CMakeFiles/homo_geo.dir/test/homo_geo.cpp.o: /home/sw/homo_geo/devel/include/homo_msgs/HomographyResult.h
 homography_geometric_control/CMakeFiles/homo_geo.dir/test/homo_geo.cpp.o: /home/sw/homo_geo/src/control/mavros_interaction/include/mavros_interaction/MavrosInteraction.h
 homography_geometric_control/CMakeFiles/homo_geo.dir/test/homo_geo.cpp.o: /home/sw/homo_geo/src/control/so3_control/include/so3_control/SO3Control.h
+homography_geometric_control/CMakeFiles/homo_geo.dir/test/homo_geo.cpp.o: /home/sw/homo_geo/src/control/uav_state/include/uav_state/Common.h
 homography_geometric_control/CMakeFiles/homo_geo.dir/test/homo_geo.cpp.o: /home/sw/homo_geo/src/control/uav_state/include/uav_state/UAVState.h
 homography_geometric_control/CMakeFiles/homo_geo.dir/test/homo_geo.cpp.o: /home/sw/homo_geo/src/homography_geometric_control/include/homography_geometric_control/HomographyGeometricControl.h
 homography_geometric_control/CMakeFiles/homo_geo.dir/test/homo_geo.cpp.o: /home/sw/homo_geo/src/homography_geometric_control/test/homo_geo.cpp
