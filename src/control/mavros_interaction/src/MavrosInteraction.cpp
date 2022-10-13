@@ -16,12 +16,23 @@ MavrosInteraction::MavrosInteraction(const ros::NodeHandle& nh,const ros::NodeHa
     double g;
     nhParam_.param("Gravity",g,9.80665);
     uav_.SetGravity(g);
-    posSub = nh_.subscribe("mavros/local_position/pose",1,&MavrosInteraction::PoseCallback,this);
-    imuSub = nh_.subscribe("mavros/imu/data",1,&MavrosInteraction::IMUCallback,this);
-    velocityBodySub = nh_.subscribe("mavros/local_position/velocity_body",1,&MavrosInteraction::VelocityBodyCallback,this);
-    velocityLocalSub = nh_.subscribe("mavros/local_position/velocity_local",1,&MavrosInteraction::VelocityLocalCallback,this);
-    px4ControlStateSub = nh_.subscribe("mavros/state",1,&MavrosInteraction::PX4ControlStateCallback,this);
+    //mavros 消息订阅
+    posSub_ = nh_.subscribe("mavros/local_position/pose",10,&MavrosInteraction::PoseCallback,this);
+    imuSub_ = nh_.subscribe("mavros/imu/data",1,&MavrosInteraction::IMUCallback,this);
+    velocityBodySub_ = nh_.subscribe("mavros/local_position/velocity_body",10,&MavrosInteraction::VelocityBodyCallback,this);
+    velocityLocalSub_ = nh_.subscribe("mavros/local_position/velocity_local",10,&MavrosInteraction::VelocityLocalCallback,this);
+    px4ControlStateSub_ = nh_.subscribe("mavros/state",10,&MavrosInteraction::PX4ControlStateCallback,this);
     
+    //mavros 消息发布
+    mixPub_ = nh_.advertise<mavros_msgs::ActuatorControl>("mavros/actuator_control",10);
+
+
+
+    nhParam_.param("MinTorque",minTorque_,-1.0);
+    nhParam_.param("MaxTorque",maxTorque_,1.0);
+    nhParam_.param("MinThrust",minThrust_,0.0);
+    nhParam_.param("MaxThrust",maxThrust_,1.0);
+
     posCallbackState = false;
     imuCallbackState = false;
     velocityBodyCallbackState = false;
@@ -53,10 +64,7 @@ MavrosInteraction::IMUCallback(const sensor_msgs::Imu::ConstPtr& msg)
     Eigen::Vector3d omegaTemp(msg->angular_velocity.x,msg->angular_velocity.y,
                             msg->angular_velocity.z);
     uav_.SetOmega(omegaTemp);
-    //加速度获取 相对于机体坐标系 z轴向上
-    Eigen::Vector3d accTemp(msg->linear_acceleration.x,msg->linear_acceleration.y,
-                            msg->linear_acceleration.z);
-    uav_.SetAcc(accTemp);  
+
     //四元数获取 相对于世界坐标系
     Eigen::Quaterniond  orientationTmp(msg->orientation.w,msg->orientation.x,
                                         msg->orientation.y,msg->orientation.z); 
@@ -71,6 +79,12 @@ MavrosInteraction::IMUCallback(const sensor_msgs::Imu::ConstPtr& msg)
     eulerAngle = uav_.QuaternionToEulerAngles(orientationTmp);
     uav_.SetEulerAngle(eulerAngle);
 
+    //加速度获取 相对于机体坐标系 z轴向上
+    Eigen::Vector3d accTemp(msg->linear_acceleration.x,msg->linear_acceleration.y,
+                            msg->linear_acceleration.z);
+                             
+    Eigen::Vector3d axisZ(0,0,1);
+    uav_.SetAcc(RTmp *accTemp - uav_.GetGravity()*axisZ);  
 }
 
 void
@@ -92,7 +106,7 @@ MavrosInteraction::VelocityLocalCallback(const geometry_msgs::TwistStamped::Cons
 void
 MavrosInteraction::PX4ControlStateCallback(const mavros_msgs::State::ConstPtr& msg)
 {
-    currentControlMode_ = *msg;
+    currentControlState_ = *msg;
 }
 
 
@@ -117,5 +131,25 @@ MavrosInteraction::GetQuadrotor()const
     return uav_;
 }
 
+const mavros_msgs::State& 
+MavrosInteraction::GetCurrentControlState()const
+{
+    return currentControlState_;
+}
+void 
+MavrosInteraction::ActuatorPub(const Eigen::Vector3d& torque,const double& thrust) const
+{
+    mavros_msgs::ActuatorControl mixTmp;
+    mixTmp.group_mix = 0;
+    mixTmp.controls[0] = std::max(minTorque_, std::min(maxTorque_,torque(0)));
+    mixTmp.controls[1] = std::max(minTorque_, std::min(maxTorque_,torque(1)));
+    mixTmp.controls[2] = std::max(minTorque_, std::min(maxTorque_,torque(2)));
+    mixTmp.controls[3] = std::max(minThrust_, std::min(maxThrust_, thrust));
+    mixTmp.controls[4] = 0.0;
+    mixTmp.controls[5] = 0.0;
+    mixTmp.controls[6] = 0.0;
+    mixTmp.controls[7] = 0.0;
+    mixPub_.publish(mixTmp);
+}
 
 }

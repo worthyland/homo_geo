@@ -90,6 +90,28 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -112,28 +134,6 @@ test:
 test/fast: test
 
 .PHONY : test/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -211,6 +211,21 @@ homography_publish: homography_geometric_control/CMakeFiles/homography_publish.d
 homography_publish/fast:
 	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/homography_publish.dir/build.make homography_geometric_control/CMakeFiles/homography_publish.dir/build
 .PHONY : homography_publish/fast
+
+# Convenience name for target.
+homography_geometric_control/CMakeFiles/offboard.dir/rule:
+	cd /home/sw/homo_geo/build && $(MAKE) -f CMakeFiles/Makefile2 homography_geometric_control/CMakeFiles/offboard.dir/rule
+.PHONY : homography_geometric_control/CMakeFiles/offboard.dir/rule
+
+# Convenience name for target.
+offboard: homography_geometric_control/CMakeFiles/offboard.dir/rule
+
+.PHONY : offboard
+
+# fast build rule for target.
+offboard/fast:
+	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/offboard.dir/build.make homography_geometric_control/CMakeFiles/offboard.dir/build
+.PHONY : offboard/fast
 
 src/HomographyGeometricControl.o: src/HomographyGeometricControl.cpp.o
 
@@ -293,6 +308,33 @@ test/homography_publish.cpp.s:
 	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/homography_publish.dir/build.make homography_geometric_control/CMakeFiles/homography_publish.dir/test/homography_publish.cpp.s
 .PHONY : test/homography_publish.cpp.s
 
+test/offboard.o: test/offboard.cpp.o
+
+.PHONY : test/offboard.o
+
+# target to build an object file
+test/offboard.cpp.o:
+	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/offboard.dir/build.make homography_geometric_control/CMakeFiles/offboard.dir/test/offboard.cpp.o
+.PHONY : test/offboard.cpp.o
+
+test/offboard.i: test/offboard.cpp.i
+
+.PHONY : test/offboard.i
+
+# target to preprocess a source file
+test/offboard.cpp.i:
+	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/offboard.dir/build.make homography_geometric_control/CMakeFiles/offboard.dir/test/offboard.cpp.i
+.PHONY : test/offboard.cpp.i
+
+test/offboard.s: test/offboard.cpp.s
+
+.PHONY : test/offboard.s
+
+# target to generate assembly for a file
+test/offboard.cpp.s:
+	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/offboard.dir/build.make homography_geometric_control/CMakeFiles/offboard.dir/test/offboard.cpp.s
+.PHONY : test/offboard.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -302,13 +344,14 @@ help:
 	@echo "... install/strip"
 	@echo "... install"
 	@echo "... list_install_components"
+	@echo "... rebuild_cache"
 	@echo "... homo_geo"
 	@echo "... homography_geometric_control"
 	@echo "... homography_publish"
+	@echo "... offboard"
+	@echo "... edit_cache"
 	@echo "... install/local"
 	@echo "... test"
-	@echo "... edit_cache"
-	@echo "... rebuild_cache"
 	@echo "... src/HomographyGeometricControl.o"
 	@echo "... src/HomographyGeometricControl.i"
 	@echo "... src/HomographyGeometricControl.s"
@@ -318,6 +361,9 @@ help:
 	@echo "... test/homography_publish.o"
 	@echo "... test/homography_publish.i"
 	@echo "... test/homography_publish.s"
+	@echo "... test/offboard.o"
+	@echo "... test/offboard.i"
+	@echo "... test/offboard.s"
 .PHONY : help
 
 

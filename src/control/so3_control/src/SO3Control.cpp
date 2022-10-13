@@ -57,6 +57,14 @@ SO3Control::GetOmegaDesired() const
     return omegaDesired_;
 }
 
+const Eigen::Vector3d& 
+SO3Control::GetTorque() const
+{
+    return torque_;
+}
+
+
+
 const Eigen::Vector3d 
 SO3Control::UpdateER()
 {
@@ -94,8 +102,17 @@ SO3Control::operator() (const Eigen::Matrix3d& RDesired,const Eigen::Vector3d& o
     curUavState_.ShowState();
     eR_ = UpdateER();
     eOmega_ = UpdateEOmega();
-
-
+    torque_ = UpdateTorque();
+    ShowInternal(5);
 }
 
+void 
+SO3Control::ShowInternal(int num) const
+{
+    std::cout << "-------------------SO3Control-------------------" <<std::endl;
+    Common::ShowVal("eR_",eR_,num);
+    Common::ShowVal("eOmega_",eOmega_,num);
+    Common::ShowVal("torque_",torque_,num);
+
+}
 } // namespace Control

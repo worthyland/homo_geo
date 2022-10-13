@@ -7,6 +7,10 @@
     <param name="ControlGain/Kvx" value="1.5"/>
     <param name="ControlGain/Kvy" value="1.5"/>
     <param name="ControlGain/Kvz" value="1.5"/>
+    <param name="MinTorque" value="-1.0"/>
+    <param name="MaxTorque" value="1.0"/>
+    <param name="MinThrust" value="0.0"/>
+    <param name="MaxThrust" value="1.0"/>
 
  </node>
 

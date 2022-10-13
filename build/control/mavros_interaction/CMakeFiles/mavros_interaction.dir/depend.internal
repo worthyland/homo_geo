@@ -13,6 +13,7 @@ control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteracti
  /opt/ros/melodic/include/geometry_msgs/Twist.h
  /opt/ros/melodic/include/geometry_msgs/TwistStamped.h
  /opt/ros/melodic/include/geometry_msgs/Vector3.h
+ /opt/ros/melodic/include/mavros_msgs/ActuatorControl.h
  /opt/ros/melodic/include/mavros_msgs/State.h
  /opt/ros/melodic/include/ros/advertise_options.h
  /opt/ros/melodic/include/ros/advertise_service_options.h

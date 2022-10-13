@@ -11,6 +11,7 @@
 #include <geometry_msgs/TwistStamped.h>
 #include <geometry_msgs/PoseStamped.h>
 #include <mavros_msgs/State.h>
+#include <mavros_msgs/ActuatorControl.h>
 
 //需要的头文件
 #include <uav_state/UAVState.h>
@@ -24,13 +25,17 @@ private:
     ros::NodeHandle nh_;
     ros::NodeHandle nhParam_;
     /* 话题订阅 */
-    ros::Subscriber posSub;//位置信息 世界框架下z轴向上为正 
-    ros::Subscriber imuSub;//获取IMU的信息 base_link 话题名称：mavros/imu/data 更新角速度（相对于机体坐标系）/加速度（相对于机体坐标系）（Z轴为9.8，加速度的值）/    四元数 相对于世界坐标系
-    ros::Subscriber velocityBodySub;//相对于机体坐标下速度,角速度 机体框架z轴向上为正 base_link 话题名称：mavros/local_position/velocity_body 
-    ros::Subscriber velocityLocalSub;//相对与世界坐标下速度，角速度 世界框架z轴向上为正 base_link 话题名称：mavros/local_position/velocity_local
-    ros::Subscriber px4ControlStateSub;
+    ros::Subscriber posSub_;//位置信息 世界框架下z轴向上为正 
+    ros::Subscriber imuSub_;//获取IMU的信息 base_link 话题名称：mavros/imu/data 更新角速度（相对于机体坐标系）/加速度（相对于机体坐标系  转化为相对世界坐标系）（Z轴为9.8，加速度的值）/    四元数 相对于世界坐标系
+    ros::Subscriber velocityBodySub_;//相对于机体坐标下速度,角速度 机体框架z轴向上为正 base_link 话题名称：mavros/local_position/velocity_body 
+    ros::Subscriber velocityLocalSub_;//相对与世界坐标下速度，角速度 世界框架z轴向上为正 base_link 话题名称：mavros/local_position/velocity_local
+    ros::Subscriber px4ControlStateSub_;//mavros/state
+    
+
     /* 话题发布 */
-    ros::Publisher mixPub;
+    ros::Publisher mixPub_;//力矩发布控制
+    double minTorque_,maxTorque_;//输出力矩限制
+    double minThrust_,maxThrust_;//输出推力限制
     /* 服务端*/
     ros::ServiceClient armingClient;
     ros::ServiceClient setModeClient;
@@ -38,8 +43,9 @@ private:
     bool posCallbackState,imuCallbackState,velocityBodyCallbackState,velocityLocalCallbackState,offboardState; 
 
     Quadrotor uav_;
-    mavros_msgs::State currentControlMode_;
+    mavros_msgs::State currentControlState_;
 
+    
 
 private:
     virtual void PoseCallback(const geometry_msgs::PoseStamped::ConstPtr& msg);
@@ -57,6 +63,9 @@ public:
 
     const Quadrotor::state& GetState()const;
     const Quadrotor& GetQuadrotor()const;
+    const mavros_msgs::State& GetCurrentControlState()const;
+
+    void ActuatorPub(const Eigen::Vector3d& val = {0,0,0},const double& thrust = 0.50) const;
     
 };
 

@@ -56,18 +56,13 @@ private:
     Eigen::Vector3d axisZ_;
     double yawDesired_;
     Eigen::Vector3d b1c_;
+
+    
     bool homographyCallbackState;
 
     virtual void HomographyCallback(const homo_msgs::HomographyResult::ConstPtr& msg);
 
-    
-
-public:
-    HomographyGeometric(const ros::NodeHandle& nh,const ros::NodeHandle& nhParam);
-    ~HomographyGeometric();
-
-    void operator() (const Control::Quadrotor& curUavState);
-    void SetCurUavState(const Control::Quadrotor& val);
+private:
     const Eigen::Vector3d UpdateError1();
     const Eigen::Vector3d UpdateError2();
     const Eigen::Vector3d UpdateFVitual();
@@ -75,9 +70,18 @@ public:
     const Eigen::Matrix3d UpdateRotationDesired();
     const Eigen::Vector3d UpdateOmegaDesired();
 
+public:
+    HomographyGeometric(const ros::NodeHandle& nh,const ros::NodeHandle& nhParam);
+    ~HomographyGeometric();
+
+    void operator() (const Control::Quadrotor& curUavState);
+    void SetCurUavState(const Control::Quadrotor& val);
+
+
     const Control::Quadrotor& GetQuadrotor()const;
     const Eigen::Matrix3d& GetRDesired()const;
     const Eigen::Vector3d& GetOmegaDesired()const;
+    const double& GetThrust()const;
     void ShowInternal(int num = 5) const;
 };
 

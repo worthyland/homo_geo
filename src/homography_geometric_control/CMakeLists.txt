@@ -58,3 +58,9 @@ target_link_libraries(homography_publish
 ${catkin_LIBRARIES}
 ${PROJECT_NAME}
 )
+
+add_executable(offboard test/offboard.cpp)
+target_link_libraries(offboard 
+${catkin_LIBRARIES}
+${PROJECT_NAME}
+)

@@ -33,7 +33,10 @@ private:
     Eigen::Vector3d torque_;
     Eigen::Vector3d eR_,eOmega_;
 
-
+private:
+    const Eigen::Vector3d UpdateER();
+    const Eigen::Vector3d UpdateEOmega();
+    const Eigen::Vector3d UpdateTorque();
 
 public:
     SO3Control(const ros::NodeHandle& nh,const ros::NodeHandle& nhParam);
@@ -46,11 +49,10 @@ public:
     void SetOmegaDesired(const Eigen::Vector3d& val);
     const Eigen::Vector3d& GetOmegaDesired() const;
 
-    const Eigen::Vector3d UpdateER();
-    const Eigen::Vector3d UpdateEOmega();
-    const Eigen::Vector3d UpdateTorque();
+    const Eigen::Vector3d& GetTorque() const;
+
     void operator() (const Eigen::Matrix3d& RDesired,const Eigen::Vector3d& omegaDesired,const Control::Quadrotor& curUavState);
-    
+    void ShowInternal(int num = 5) const;
 };
 
 } // namespace CONTROL

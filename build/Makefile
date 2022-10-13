@@ -791,6 +791,19 @@ homography_publish/fast:
 	$(MAKE) -f homography_geometric_control/CMakeFiles/homography_publish.dir/build.make homography_geometric_control/CMakeFiles/homography_publish.dir/build
 .PHONY : homography_publish/fast
 
+#=============================================================================
+# Target rules for targets named offboard
+
+# Build rule for target.
+offboard: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 offboard
+.PHONY : offboard
+
+# fast build rule for target.
+offboard/fast:
+	$(MAKE) -f homography_geometric_control/CMakeFiles/offboard.dir/build.make homography_geometric_control/CMakeFiles/offboard.dir/build
+.PHONY : offboard/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -852,6 +865,7 @@ help:
 	@echo "... homo_geo"
 	@echo "... homography_geometric_control"
 	@echo "... homography_publish"
+	@echo "... offboard"
 .PHONY : help
 
 

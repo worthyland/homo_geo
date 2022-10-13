@@ -13,6 +13,7 @@ homography_geometric_control/CMakeFiles/homography_publish.dir/test/homography_p
 homography_geometric_control/CMakeFiles/homography_publish.dir/test/homography_publish.cpp.o: /opt/ros/melodic/include/geometry_msgs/Twist.h
 homography_geometric_control/CMakeFiles/homography_publish.dir/test/homography_publish.cpp.o: /opt/ros/melodic/include/geometry_msgs/TwistStamped.h
 homography_geometric_control/CMakeFiles/homography_publish.dir/test/homography_publish.cpp.o: /opt/ros/melodic/include/geometry_msgs/Vector3.h
+homography_geometric_control/CMakeFiles/homography_publish.dir/test/homography_publish.cpp.o: /opt/ros/melodic/include/mavros_msgs/ActuatorControl.h
 homography_geometric_control/CMakeFiles/homography_publish.dir/test/homography_publish.cpp.o: /opt/ros/melodic/include/mavros_msgs/State.h
 homography_geometric_control/CMakeFiles/homography_publish.dir/test/homography_publish.cpp.o: /opt/ros/melodic/include/ros/advertise_options.h
 homography_geometric_control/CMakeFiles/homography_publish.dir/test/homography_publish.cpp.o: /opt/ros/melodic/include/ros/advertise_service_options.h

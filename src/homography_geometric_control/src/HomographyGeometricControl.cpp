@@ -102,7 +102,9 @@ HomographyGeometric::UpdateRotationDesired()
     Eigen::Vector3d dot_b1d,dot_b2d,dot_b3d;
     Eigen::Vector3d dot_b1c;
     Eigen::Vector3d tmp,dot_tmp;//tmp代表临时变量 局部变量
-    dot_b1c << -sin(yawDesired_),cos(yawDesired_),0;
+
+    dot_b1c << -sin(yawDesired_)*curUavState_.GetOmega()(2),cos(yawDesired_)*curUavState_.GetOmega()(2),0;
+
     b3d = RZ_ * (- FVitual_/curUavState_.GetMass() + curUavState_.GetGravity()*axisZ_ );
     tmp = b3d;
     //限幅处理
@@ -114,23 +116,25 @@ HomographyGeometric::UpdateRotationDesired()
     b1d.normalize();
 
     // Eigen::Vector3d debugVal1,debugVal2,debugVal3;//调试变量  仅调试用
- 
-
+//     debugVal1 = RZ_*Common::MatrixHat(curUavState_.GetOmega()(2)*axisZ_)*(- FVitual_/curUavState_.GetMass() + curUavState_.GetGravity()*axisZ_ );
+// debugVal2 = RZ_*((controlGain_.Kv/(curUavState_.GetMass()*controlGain_.c) * 
+// ( -Common::MatrixHat(curUavState_.GetOmega()(2)*axisZ_)*e1_ + (  RY_*RX_*curUavState_.GetAcc())/controlGain_.c + controlGain_.c *(e2_-e1_))));
+    // dot_tmp = debugVal1 + debugVal2;
+                 
     dot_tmp = RZ_*Common::MatrixHat(curUavState_.GetOmega()(2)*axisZ_)*(- FVitual_/curUavState_.GetMass() + curUavState_.GetGravity()*axisZ_ )
-                + RZ_*(controlGain_.Kv/(curUavState_.GetMass()*controlGain_.c) * 
-                 ( -Common::MatrixHat(curUavState_.GetOmega()(2)*axisZ_)*e1_ + FVitual_/(curUavState_.GetMass()*controlGain_.c) + controlGain_.c *(e2_-e1_)));
-    
-    dot_tmp = dot_tmp/tmp.norm();
-    dot_b3d = b3d.cross(dot_tmp).cross(b3d);
+                + RZ_*((controlGain_.Kv/(curUavState_.GetMass()*controlGain_.c) * 
+                 ( -Common::MatrixHat(curUavState_.GetOmega()(2)*axisZ_)*e1_ + (  RY_*RX_*curUavState_.GetAcc())/controlGain_.c + controlGain_.c *(e2_-e1_))));
+
+    dot_b3d = b3d.cross(dot_tmp/tmp.norm()).cross(b3d);
     dot_b2d = b2d.cross((dot_b3d.cross(b1c_) + dot_b1c.cross(b3d))/b3d.cross(b1c_).norm()).cross(b2d);
     dot_b1d = dot_b2d.cross(b3d) + dot_b3d.cross(b2d);
 
     res = Common::VectorToMatrix(b1d,b2d,b3d);
     dot_RDesired_ = Common::VectorToMatrix(dot_b1d,dot_b2d,dot_b3d);
-    Common::ShowVal("dot_tmp",dot_tmp);
-    Common::ShowVal("dot_b3d",dot_b3d);
-    Common::ShowVal("dot_b2d",dot_b2d);
-    Common::ShowVal("dot_b1d",dot_b1d);
+
+    // Common::ShowVal("debugVal1",debugVal1);
+    // Common::ShowVal("debugVal2",debugVal2);
+
     return res;
 }
 
@@ -195,6 +199,11 @@ HomographyGeometric::GetRDesired()const
     return RDesired_;
 }
 
+const double& 
+HomographyGeometric::GetThrust()const
+{
+    return thrust_;
+}
 void 
 HomographyGeometric::ShowInternal(int num) const
 {
