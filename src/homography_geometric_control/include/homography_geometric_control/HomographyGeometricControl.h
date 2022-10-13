@@ -28,6 +28,7 @@ private:
     ros::NodeHandle nh_;
     ros::NodeHandle nhParam_;
     ros::Subscriber homographySub;
+
     ControlGain controlGain_;
     Eigen::Matrix3d homography_,homographyVirtual_;
     Control::Quadrotor curUavState_;//当前的无人机状态 basened相对refned
@@ -51,11 +52,14 @@ private:
     Eigen::Matrix3d dot_RDesired_;
     Eigen::Vector3d omegaDesired_;
     double thrust_;
+
     //以下变量为常量
     Eigen::Vector3d mStar_;
     Eigen::Vector3d axisZ_;
-    double yawDesired_;
-    Eigen::Vector3d b1c_;
+    double yawDesired_;//期望偏航角
+    Eigen::Vector3d b1c_;//
+    double thrustOffest_;//重力和推力平衡时的零偏值 0～1
+    double thrustScale_;//推力的缩放比例
 
     
     bool homographyCallbackState;
@@ -83,6 +87,7 @@ public:
     const Eigen::Vector3d& GetOmegaDesired()const;
     const double& GetThrust()const;
     void ShowInternal(int num = 5) const;
+    void ShowParamVal(int num = 5) const;
 };
 
 

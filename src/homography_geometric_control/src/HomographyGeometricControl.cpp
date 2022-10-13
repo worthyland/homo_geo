@@ -15,7 +15,8 @@ HomographyGeometric::HomographyGeometric(const ros::NodeHandle& nh,const ros::No
     nhParam_.param("ControlGain/Kvx",controlGain_.Kv(0,0),1.0);
     nhParam_.param("ControlGain/Kvy",controlGain_.Kv(1,1),1.0);
     nhParam_.param("ControlGain/Kvz",controlGain_.Kv(2,2),1.0);
-
+    nhParam_.param("ThrustOffest",thrustOffest_,0.40);
+    nhParam_.param("ThrustScale",thrustScale_,0.25);
 
     homography_ = Eigen::Matrix3d::Identity();
     homographyVirtual_ = Eigen::Matrix3d::Identity();
@@ -91,6 +92,7 @@ HomographyGeometric::UpdateThrust()
 {
     double res;
     res = - (FVitual_ - curUavState_.GetMass() * curUavState_.GetGravity() * axisZ_).transpose()*(RY_*RX_*axisZ_);
+    res = (res - curUavState_.GetMass() * curUavState_.GetGravity())*0.25 + thrustOffest_;
     return res;
 }
 
@@ -155,7 +157,7 @@ HomographyGeometric::GetOmegaDesired()const
 void 
 HomographyGeometric::operator() (const Control::Quadrotor& curUavState)
 {
-    //curUavState.ShowState();
+
     Eigen::Matrix3d enu_R_ned;
     enu_R_ned << 1.0, 0.0, 0.0,
                  0.0, -1.0, 0.0, 
@@ -184,7 +186,9 @@ HomographyGeometric::operator() (const Control::Quadrotor& curUavState)
     // Common::ShowVal("RZ_",RZ_);
     // Common::ShowVal("RY_",RY_);
     // Common::ShowVal("RX_",RX_);
-    ShowInternal(8);
+    curUavState_.ShowState(5);
+    ShowInternal(5);
+    ShowParamVal(5);
 }
 
 const Control::Quadrotor& 
@@ -208,6 +212,7 @@ void
 HomographyGeometric::ShowInternal(int num) const
 {
     std::cout << "-------------------HomographyFGeometric-------------------" <<std::endl;
+    Common::ShowVal("homography_",homography_,num);
     Common::ShowVal("e1_",e1_,num);
     Common::ShowVal("e2_",e2_,num);
     Common::ShowVal("FVitual_",FVitual_,num);
@@ -218,4 +223,13 @@ HomographyGeometric::ShowInternal(int num) const
 
 }
 
+void 
+HomographyGeometric::ShowParamVal(int num) const
+{
+    Common::ShowVal("yawDesired_",yawDesired_,num);
+    Common::ShowVal("controlGain_.c",controlGain_.c,num);
+    Common::ShowVal("controlGain_.Kv",controlGain_.Kv,num);
+    Common::ShowVal("thrustOffest_",thrustOffest_,num);
+    Common::ShowVal("thrustScale_",thrustScale_,num);
+}
 }

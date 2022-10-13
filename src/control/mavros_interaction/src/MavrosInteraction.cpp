@@ -16,6 +16,10 @@ MavrosInteraction::MavrosInteraction(const ros::NodeHandle& nh,const ros::NodeHa
     double g;
     nhParam_.param("Gravity",g,9.80665);
     uav_.SetGravity(g);
+    nhParam_.param("MinTorque",minTorque_,-1.0);
+    nhParam_.param("MaxTorque",maxTorque_,1.0);
+    nhParam_.param("MinThrust",minThrust_,0.0);
+    nhParam_.param("MaxThrust",maxThrust_,1.0);
     //mavros 消息订阅
     posSub_ = nh_.subscribe("mavros/local_position/pose",10,&MavrosInteraction::PoseCallback,this);
     imuSub_ = nh_.subscribe("mavros/imu/data",1,&MavrosInteraction::IMUCallback,this);
@@ -28,10 +32,7 @@ MavrosInteraction::MavrosInteraction(const ros::NodeHandle& nh,const ros::NodeHa
 
 
 
-    nhParam_.param("MinTorque",minTorque_,-1.0);
-    nhParam_.param("MaxTorque",maxTorque_,1.0);
-    nhParam_.param("MinThrust",minThrust_,0.0);
-    nhParam_.param("MaxThrust",maxThrust_,1.0);
+
 
     posCallbackState = false;
     imuCallbackState = false;
@@ -137,7 +138,7 @@ MavrosInteraction::GetCurrentControlState()const
     return currentControlState_;
 }
 void 
-MavrosInteraction::ActuatorPub(const Eigen::Vector3d& torque,const double& thrust) const
+MavrosInteraction::ActuatorPub(const double& thrust,const Eigen::Vector3d& torque) const
 {
     mavros_msgs::ActuatorControl mixTmp;
     mixTmp.group_mix = 0;
@@ -149,6 +150,10 @@ MavrosInteraction::ActuatorPub(const Eigen::Vector3d& torque,const double& thrus
     mixTmp.controls[5] = 0.0;
     mixTmp.controls[6] = 0.0;
     mixTmp.controls[7] = 0.0;
+    // Common::ShowVal("minTorque_",minTorque_,5);
+    // Common::ShowVal("maxTorque_",maxTorque_,5);
+    // Common::ShowVal("minThrust_",minThrust_,5);
+    // Common::ShowVal("maxThrust_",maxThrust_,5);
     mixPub_.publish(mixTmp);
 }
 

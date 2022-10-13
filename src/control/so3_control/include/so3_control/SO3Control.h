@@ -53,6 +53,7 @@ public:
 
     void operator() (const Eigen::Matrix3d& RDesired,const Eigen::Vector3d& omegaDesired,const Control::Quadrotor& curUavState);
     void ShowInternal(int num = 5) const;
+    void ShowParamVal(int num = 5) const;
 };
 
 } // namespace CONTROL

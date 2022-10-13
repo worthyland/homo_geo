@@ -65,7 +65,7 @@ public:
     const Quadrotor& GetQuadrotor()const;
     const mavros_msgs::State& GetCurrentControlState()const;
 
-    void ActuatorPub(const Eigen::Vector3d& val = {0,0,0},const double& thrust = 0.50) const;
+    void ActuatorPub(const double& thrust = 0.50,const Eigen::Vector3d& torque = {0,0,0}) const;
     
 };
 
