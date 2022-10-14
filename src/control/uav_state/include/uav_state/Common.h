@@ -53,6 +53,7 @@ ShowVal(const std::string& str,const Eigen::Matrix3d& val,int num=5)
     std::cout<<std::fixed<< std::setprecision(num)<< val<<std::endl;
 }
 
+
 static void 
 ShowVal(const std::string& str,const Eigen::Quaterniond& val,int num=5) 
 {
@@ -60,9 +61,9 @@ ShowVal(const std::string& str,const Eigen::Quaterniond& val,int num=5)
     std::cout<<std::fixed<< std::setprecision(num)<< val.w()<<","<<val.x()<<","
                                                 <<val.y()<<","<<val.z()<<std::endl;
 }
-
+template<typename T>
 static void 
-ShowVal(const std::string& str,const double& val,int num=5)
+ShowVal(const std::string& str,const T& val,int num=5)
 {
     std::cout << str <<":";
     std::cout<<std::fixed<< std::setprecision(num)<< val <<std::endl;
