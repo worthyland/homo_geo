@@ -16,7 +16,7 @@ HomographyGeometric::HomographyGeometric(const ros::NodeHandle& nh,const ros::No
     nhParam_.param("ControlGain/Kvy",controlGain_.Kv(1,1),1.0);
     nhParam_.param("ControlGain/Kvz",controlGain_.Kv(2,2),1.0);
     nhParam_.param("ThrustOffest",thrustOffest_,0.40);
-    nhParam_.param("ThrustScale",thrustScale_,0.25);
+    nhParam_.param("ThrustScale",thrustScale_,0.025);
 
     homography_ = Eigen::Matrix3d::Identity();
     homographyVirtual_ = Eigen::Matrix3d::Identity();
@@ -91,8 +91,10 @@ const double
 HomographyGeometric::UpdateThrust()
 {
     double res;
-    res = - (FVitual_ - curUavState_.GetMass() * curUavState_.GetGravity() * axisZ_).transpose()*(RY_*RX_*axisZ_);
-    res = (res - curUavState_.GetMass() * curUavState_.GetGravity())*0.25 + thrustOffest_;
+    res = - (FVitual_ - curUavState_.GetMass() * curUavState_.GetGravity() * RZ_*axisZ_).transpose()*(RY_*RX_*axisZ_);
+    // Common::ShowVal("res",res);
+    res = (res - curUavState_.GetMass() * curUavState_.GetGravity())*thrustScale_ + thrustOffest_;
+    
     return res;
 }
 
@@ -163,12 +165,22 @@ HomographyGeometric::operator() (const Control::Quadrotor& curUavState)
                  0.0, -1.0, 0.0, 
                  0.0, 0.0, -1.0;
     SetCurUavState(curUavState);//外部传的state为相对与世界坐标系 
+    //两次转换 
+    curUavState_.Vector3dFrameTransform(curUavState_.GetR().transpose());
+    curUavState_.Vector3dFrameTransform(enu_R_ned.transpose());
     //相对坐标系转换
     curUavState_.RotationFrameTransform(enu_R_ned.transpose(),enu_R_ned);
-    curUavState_.Vector3dFrameTransform(enu_R_ned.transpose());
+    //角速度单独转换 因为默认都是 base_x_base，现在需要 baseNed_x_naseNed
+    Eigen::Vector3d omega(curUavState_.GetOmega());
+    omega = enu_R_ned.transpose() * omega;
+    curUavState_.SetOmega(omega);
 
     //更新内部变量
+    // Eigen::Vector3d angle(curUavState_.GetEulerAngle());
     Eigen::Vector3d angle(curUavState_.GetEulerAngle());
+
+
+
     RZ_ << cos(angle(0)),-sin(angle(0)),0,sin(angle(0)),cos(angle(0)),0,0,0,1;
     RY_ << cos(angle(1)),0,sin(angle(1)),0,1,0,-sin(angle(1)),0,cos(angle(1));
     RX_ << 1,0,0,0,cos(angle(2)),-sin(angle(2)),0,sin(angle(2)),cos(angle(2));
@@ -186,9 +198,9 @@ HomographyGeometric::operator() (const Control::Quadrotor& curUavState)
     // Common::ShowVal("RZ_",RZ_);
     // Common::ShowVal("RY_",RY_);
     // Common::ShowVal("RX_",RX_);
-    curUavState_.ShowState(5);
+    curUavState_.ShowState("homo",5);
     ShowInternal(5);
-    ShowParamVal(5);
+    // ShowParamVal(5);
 }
 
 const Control::Quadrotor& 

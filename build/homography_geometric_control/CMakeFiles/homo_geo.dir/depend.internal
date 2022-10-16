@@ -75,7 +75,10 @@ homography_geometric_control/CMakeFiles/homo_geo.dir/test/homo_geo.cpp.o
  /opt/ros/melodic/include/ros/wall_timer_options.h
  /opt/ros/melodic/include/rosconsole/macros_generated.h
  /opt/ros/melodic/include/sensor_msgs/Imu.h
+ /opt/ros/melodic/include/std_msgs/Float32MultiArray.h
  /opt/ros/melodic/include/std_msgs/Header.h
+ /opt/ros/melodic/include/std_msgs/MultiArrayDimension.h
+ /opt/ros/melodic/include/std_msgs/MultiArrayLayout.h
  /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
  /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h
  /usr/include/eigen3/Eigen/Cholesky

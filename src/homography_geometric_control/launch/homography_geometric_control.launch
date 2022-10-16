@@ -3,26 +3,29 @@
  <node pkg="homography_geometric_control" name="homo_geo" type="homo_geo" output="screen">
    <!-- MavrosInteraction parameters -->
     <param name="Control_rate" value="200.0"/>
-    <param name="ControlGain/KRx" value="0.1"/>
-    <param name="ControlGain/KRy" value="0.1"/>
-    <param name="ControlGain/KRz" value="0.1"/>
-    <param name="ControlGain/KOmegax" value="0.01"/>
-    <param name="ControlGain/KOmegay" value="0.01"/>
-    <param name="ControlGain/KOmegaz" value="0.01"/>    
+    <param name="ControlGain/KRx" value="0.45"/>
+    <param name="ControlGain/KRy" value="0.45"/>
+    <param name="ControlGain/KRz" value="0.3"/>
+    <param name="ControlGain/KOmegax" value="0.12"/>
+    <param name="ControlGain/KOmegay" value="0.12"/>
+    <param name="ControlGain/KOmegaz" value="0.082"/>    
    <!-- MavrosInteraction parameters -->
     <param name="Mass" value="1.5"/>
     <param name="Gravity" value="9.80665"/>
+    <param name="InertialMatrix/Ixx" value="0.029125"/>
+    <param name="InertialMatrix/Iyy" value="0.029125"/>
+    <param name="InertialMatrix/Izz" value="0.055225"/>
     <param name="MinTorque" value="-0.5"/>
     <param name="MaxTorque" value="0.5"/>
     <param name="MinThrust" value="0.3"/>
     <param name="MaxThrust" value="0.7"/>
     
     <!-- HomographyGeometric parameters -->
-    <param name="ControlGain/c" value="1.0"/>
+    <param name="ControlGain/c" value="1.5"/>
     <param name="YawDesired" value="0.0"/>
-    <param name="ControlGain/Kvx" value="1.5"/>
-    <param name="ControlGain/Kvy" value="1.5"/>
-    <param name="ControlGain/Kvz" value="1.5"/>
+    <param name="ControlGain/Kvx" value="6.0"/>
+    <param name="ControlGain/Kvy" value="6.0"/>
+    <param name="ControlGain/Kvz" value="4.0"/>
     <param name="ThrustOffest" value="0.567"/>
     <param name="ThrustScale" value="0.25"/>
  </node>

@@ -91,6 +91,7 @@ SO3Control::UpdateTorque()
     part2 = - controlGain_.KR * eR_;
     part3 = - controlGain_.KOmega * eOmega_;
     res = part1 + part2 + part3;
+    // res = part2 + part3;
     return res;
 }
 void 
@@ -106,7 +107,7 @@ SO3Control::operator() (const Eigen::Matrix3d& RDesired,const Eigen::Vector3d& o
 
     
     ShowInternal(5);
-    ShowParamVal(5);
+    // ShowParamVal(5);
 }
 
 void 

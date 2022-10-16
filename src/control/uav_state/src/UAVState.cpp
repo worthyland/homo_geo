@@ -31,7 +31,7 @@ Quadrotor::Quadrotor()
     state_.eulerAngle = Eigen::Vector3d::Zero();
     state_.omega = Eigen::Vector3d::Zero();
     state_.R = Eigen::Matrix3d::Identity();
-    state_.J = Eigen::Matrix3d::Identity();
+    state_.J = Eigen::Matrix3d::Identity() * 0.01;
     Eigen::Quaterniond orientationTmp(1,0,0,0);
     state_.orientation = orientationTmp;
 }
@@ -232,9 +232,9 @@ Quadrotor::Vector3dFrameTransform(const Eigen::Matrix3d& Left)
  * 
  * @param num 控制显示的小数点后位数
  */
-void Quadrotor::ShowState(int num) const
+void Quadrotor::ShowState(const std::string& str,int num) const
 {
-    std::cout << "------------------状态量显示---------------- " <<std::endl;
+    std::cout << "---------------"<<str<<":状态量显示"<<"---------------- " <<std::endl;
     Common::ShowVal("质量mass",state_.mass,num);
     Common::ShowVal("重力加速度g",state_.g,num);
     Common::ShowVal("位置pos",state_.pos,num);

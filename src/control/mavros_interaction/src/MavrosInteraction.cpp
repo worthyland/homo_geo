@@ -16,6 +16,11 @@ MavrosInteraction::MavrosInteraction(const ros::NodeHandle& nh,const ros::NodeHa
     double g;
     nhParam_.param("Gravity",g,9.80665);
     uav_.SetGravity(g);
+    Eigen::Matrix3d JTmp = Eigen::Matrix3d::Identity();
+    nhParam_.param("InertialMatrix/Ixx",JTmp(0,0),0.029125);
+    nhParam_.param("InertialMatrix/Iyy",JTmp(1,1),0.029125);
+    nhParam_.param("InertialMatrix/Izz",JTmp(2,2),0.055225);
+    uav_.SetInertialMatrix(JTmp);
     nhParam_.param("MinTorque",minTorque_,-1.0);
     nhParam_.param("MaxTorque",maxTorque_,1.0);
     nhParam_.param("MinThrust",minThrust_,0.0);
@@ -61,7 +66,7 @@ void
 MavrosInteraction::IMUCallback(const sensor_msgs::Imu::ConstPtr& msg)
 {
     imuCallbackState = true;
-    //角速度获取 相对于机体坐标系 z轴向上
+    //角速度获取 相对于机体坐标系 z轴向上 
     Eigen::Vector3d omegaTemp(msg->angular_velocity.x,msg->angular_velocity.y,
                             msg->angular_velocity.z);
     uav_.SetOmega(omegaTemp);
@@ -116,7 +121,7 @@ MavrosInteraction::PX4ControlStateCallback(const mavros_msgs::State::ConstPtr& m
 void 
 MavrosInteraction::ShowUavState(int num) const
 {
-    uav_.ShowState(num);
+    uav_.ShowState("local",num);
 }
 
 const Quadrotor::state& 
@@ -137,8 +142,15 @@ MavrosInteraction::GetCurrentControlState()const
 {
     return currentControlState_;
 }
+/**
+ * @brief 发布推力和力矩给无人机
+ * 作用的frame为base_link_ned
+ * 
+ * @param thrust （0.0，1.0）
+ * @param torque （-1.0，1.0）
+ */
 void 
-MavrosInteraction::ActuatorPub(const double& thrust,const Eigen::Vector3d& torque) const
+MavrosInteraction::ActuatorPub(const double& thrust,const Eigen::Vector3d& torque,bool showVal) const
 {
     mavros_msgs::ActuatorControl mixTmp;
     mixTmp.group_mix = 0;
@@ -150,10 +162,16 @@ MavrosInteraction::ActuatorPub(const double& thrust,const Eigen::Vector3d& torqu
     mixTmp.controls[5] = 0.0;
     mixTmp.controls[6] = 0.0;
     mixTmp.controls[7] = 0.0;
-    // Common::ShowVal("minTorque_",minTorque_,5);
-    // Common::ShowVal("maxTorque_",maxTorque_,5);
-    // Common::ShowVal("minThrust_",minThrust_,5);
-    // Common::ShowVal("maxThrust_",maxThrust_,5);
+    if(showVal){
+        Common::ShowVal("minTorque_",minTorque_,5);
+        Common::ShowVal("maxTorque_",maxTorque_,5);
+        Common::ShowVal("minThrust_",minThrust_,5);
+        Common::ShowVal("maxThrust_",maxThrust_,5);
+        Common::ShowVal("torque(0)",torque(0),5);
+        Common::ShowVal("torque(1)",torque(1),5);
+        Common::ShowVal("torque(2)",torque(2),5);
+        Common::ShowVal("thrust",thrust,5);
+    }
     mixPub_.publish(mixTmp);
 }
 

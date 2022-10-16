@@ -51,7 +51,7 @@ private:
     Eigen::Matrix3d RDesired_;
     Eigen::Matrix3d dot_RDesired_;
     Eigen::Vector3d omegaDesired_;
-    double thrust_;
+    double thrust_;//论文里为正数，为电机推力之和
 
     //以下变量为常量
     Eigen::Vector3d mStar_;

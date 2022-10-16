@@ -69,6 +69,9 @@ ShowVal(const std::string& str,const T& val,int num=5)
     std::cout<<std::fixed<< std::setprecision(num)<< val <<std::endl;
 }
 
+
+
+
 } // namespace name
 
 
