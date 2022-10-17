@@ -753,30 +753,17 @@ so3_control/fast:
 .PHONY : so3_control/fast
 
 #=============================================================================
-# Target rules for targets named homo_geo
+# Target rules for targets named offboard
 
 # Build rule for target.
-homo_geo: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 homo_geo
-.PHONY : homo_geo
+offboard: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 offboard
+.PHONY : offboard
 
 # fast build rule for target.
-homo_geo/fast:
-	$(MAKE) -f homography_geometric_control/CMakeFiles/homo_geo.dir/build.make homography_geometric_control/CMakeFiles/homo_geo.dir/build
-.PHONY : homo_geo/fast
-
-#=============================================================================
-# Target rules for targets named homography_geometric_control
-
-# Build rule for target.
-homography_geometric_control: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 homography_geometric_control
-.PHONY : homography_geometric_control
-
-# fast build rule for target.
-homography_geometric_control/fast:
-	$(MAKE) -f homography_geometric_control/CMakeFiles/homography_geometric_control.dir/build.make homography_geometric_control/CMakeFiles/homography_geometric_control.dir/build
-.PHONY : homography_geometric_control/fast
+offboard/fast:
+	$(MAKE) -f homography_geometric_control/CMakeFiles/offboard.dir/build.make homography_geometric_control/CMakeFiles/offboard.dir/build
+.PHONY : offboard/fast
 
 #=============================================================================
 # Target rules for targets named homography_publish
@@ -792,17 +779,95 @@ homography_publish/fast:
 .PHONY : homography_publish/fast
 
 #=============================================================================
-# Target rules for targets named offboard
+# Target rules for targets named homo_geo
 
 # Build rule for target.
-offboard: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 offboard
-.PHONY : offboard
+homo_geo: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 homo_geo
+.PHONY : homo_geo
 
 # fast build rule for target.
-offboard/fast:
-	$(MAKE) -f homography_geometric_control/CMakeFiles/offboard.dir/build.make homography_geometric_control/CMakeFiles/offboard.dir/build
-.PHONY : offboard/fast
+homo_geo/fast:
+	$(MAKE) -f homography_geometric_control/CMakeFiles/homo_geo.dir/build.make homography_geometric_control/CMakeFiles/homo_geo.dir/build
+.PHONY : homo_geo/fast
+
+#=============================================================================
+# Target rules for targets named sensor_msgs_generate_messages_eus
+
+# Build rule for target.
+sensor_msgs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sensor_msgs_generate_messages_eus
+.PHONY : sensor_msgs_generate_messages_eus
+
+# fast build rule for target.
+sensor_msgs_generate_messages_eus/fast:
+	$(MAKE) -f homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+.PHONY : sensor_msgs_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named homography_geometric_control
+
+# Build rule for target.
+homography_geometric_control: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 homography_geometric_control
+.PHONY : homography_geometric_control
+
+# fast build rule for target.
+homography_geometric_control/fast:
+	$(MAKE) -f homography_geometric_control/CMakeFiles/homography_geometric_control.dir/build.make homography_geometric_control/CMakeFiles/homography_geometric_control.dir/build
+.PHONY : homography_geometric_control/fast
+
+#=============================================================================
+# Target rules for targets named sensor_msgs_generate_messages_lisp
+
+# Build rule for target.
+sensor_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sensor_msgs_generate_messages_lisp
+.PHONY : sensor_msgs_generate_messages_lisp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+.PHONY : sensor_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named sensor_msgs_generate_messages_nodejs
+
+# Build rule for target.
+sensor_msgs_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sensor_msgs_generate_messages_nodejs
+.PHONY : sensor_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+sensor_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+.PHONY : sensor_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named sensor_msgs_generate_messages_cpp
+
+# Build rule for target.
+sensor_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sensor_msgs_generate_messages_cpp
+.PHONY : sensor_msgs_generate_messages_cpp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+.PHONY : sensor_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named sensor_msgs_generate_messages_py
+
+# Build rule for target.
+sensor_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sensor_msgs_generate_messages_py
+.PHONY : sensor_msgs_generate_messages_py
+
+# fast build rule for target.
+sensor_msgs_generate_messages_py/fast:
+	$(MAKE) -f homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+.PHONY : sensor_msgs_generate_messages_py/fast
 
 # Help Target
 help:
@@ -862,10 +927,15 @@ help:
 	@echo "... MavrosInteractionTest"
 	@echo "... mavros_interaction"
 	@echo "... so3_control"
-	@echo "... homo_geo"
-	@echo "... homography_geometric_control"
-	@echo "... homography_publish"
 	@echo "... offboard"
+	@echo "... homography_publish"
+	@echo "... homo_geo"
+	@echo "... sensor_msgs_generate_messages_eus"
+	@echo "... homography_geometric_control"
+	@echo "... sensor_msgs_generate_messages_lisp"
+	@echo "... sensor_msgs_generate_messages_nodejs"
+	@echo "... sensor_msgs_generate_messages_cpp"
+	@echo "... sensor_msgs_generate_messages_py"
 .PHONY : help
 
 

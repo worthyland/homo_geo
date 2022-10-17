@@ -12,9 +12,6 @@
    <!-- MavrosInteraction parameters -->
     <param name="Mass" value="1.5"/>
     <param name="Gravity" value="9.80665"/>
-    <param name="InertialMatrix/Ixx" value="0.029125"/>
-    <param name="InertialMatrix/Iyy" value="0.029125"/>
-    <param name="InertialMatrix/Izz" value="0.055225"/>
     <param name="MinTorque" value="-0.5"/>
     <param name="MaxTorque" value="0.5"/>
     <param name="MinThrust" value="0.3"/>

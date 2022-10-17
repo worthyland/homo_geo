@@ -168,34 +168,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-homography_geometric_control/CMakeFiles/homo_geo.dir/rule:
-	cd /home/sw/homo_geo/build && $(MAKE) -f CMakeFiles/Makefile2 homography_geometric_control/CMakeFiles/homo_geo.dir/rule
-.PHONY : homography_geometric_control/CMakeFiles/homo_geo.dir/rule
+homography_geometric_control/CMakeFiles/offboard.dir/rule:
+	cd /home/sw/homo_geo/build && $(MAKE) -f CMakeFiles/Makefile2 homography_geometric_control/CMakeFiles/offboard.dir/rule
+.PHONY : homography_geometric_control/CMakeFiles/offboard.dir/rule
 
 # Convenience name for target.
-homo_geo: homography_geometric_control/CMakeFiles/homo_geo.dir/rule
+offboard: homography_geometric_control/CMakeFiles/offboard.dir/rule
 
-.PHONY : homo_geo
+.PHONY : offboard
 
 # fast build rule for target.
-homo_geo/fast:
-	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/homo_geo.dir/build.make homography_geometric_control/CMakeFiles/homo_geo.dir/build
-.PHONY : homo_geo/fast
-
-# Convenience name for target.
-homography_geometric_control/CMakeFiles/homography_geometric_control.dir/rule:
-	cd /home/sw/homo_geo/build && $(MAKE) -f CMakeFiles/Makefile2 homography_geometric_control/CMakeFiles/homography_geometric_control.dir/rule
-.PHONY : homography_geometric_control/CMakeFiles/homography_geometric_control.dir/rule
-
-# Convenience name for target.
-homography_geometric_control: homography_geometric_control/CMakeFiles/homography_geometric_control.dir/rule
-
-.PHONY : homography_geometric_control
-
-# fast build rule for target.
-homography_geometric_control/fast:
-	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/homography_geometric_control.dir/build.make homography_geometric_control/CMakeFiles/homography_geometric_control.dir/build
-.PHONY : homography_geometric_control/fast
+offboard/fast:
+	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/offboard.dir/build.make homography_geometric_control/CMakeFiles/offboard.dir/build
+.PHONY : offboard/fast
 
 # Convenience name for target.
 homography_geometric_control/CMakeFiles/homography_publish.dir/rule:
@@ -213,19 +198,109 @@ homography_publish/fast:
 .PHONY : homography_publish/fast
 
 # Convenience name for target.
-homography_geometric_control/CMakeFiles/offboard.dir/rule:
-	cd /home/sw/homo_geo/build && $(MAKE) -f CMakeFiles/Makefile2 homography_geometric_control/CMakeFiles/offboard.dir/rule
-.PHONY : homography_geometric_control/CMakeFiles/offboard.dir/rule
+homography_geometric_control/CMakeFiles/homo_geo.dir/rule:
+	cd /home/sw/homo_geo/build && $(MAKE) -f CMakeFiles/Makefile2 homography_geometric_control/CMakeFiles/homo_geo.dir/rule
+.PHONY : homography_geometric_control/CMakeFiles/homo_geo.dir/rule
 
 # Convenience name for target.
-offboard: homography_geometric_control/CMakeFiles/offboard.dir/rule
+homo_geo: homography_geometric_control/CMakeFiles/homo_geo.dir/rule
 
-.PHONY : offboard
+.PHONY : homo_geo
 
 # fast build rule for target.
-offboard/fast:
-	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/offboard.dir/build.make homography_geometric_control/CMakeFiles/offboard.dir/build
-.PHONY : offboard/fast
+homo_geo/fast:
+	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/homo_geo.dir/build.make homography_geometric_control/CMakeFiles/homo_geo.dir/build
+.PHONY : homo_geo/fast
+
+# Convenience name for target.
+homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule:
+	cd /home/sw/homo_geo/build && $(MAKE) -f CMakeFiles/Makefile2 homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+.PHONY : homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_eus: homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_eus
+
+# fast build rule for target.
+sensor_msgs_generate_messages_eus/fast:
+	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+.PHONY : sensor_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+homography_geometric_control/CMakeFiles/homography_geometric_control.dir/rule:
+	cd /home/sw/homo_geo/build && $(MAKE) -f CMakeFiles/Makefile2 homography_geometric_control/CMakeFiles/homography_geometric_control.dir/rule
+.PHONY : homography_geometric_control/CMakeFiles/homography_geometric_control.dir/rule
+
+# Convenience name for target.
+homography_geometric_control: homography_geometric_control/CMakeFiles/homography_geometric_control.dir/rule
+
+.PHONY : homography_geometric_control
+
+# fast build rule for target.
+homography_geometric_control/fast:
+	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/homography_geometric_control.dir/build.make homography_geometric_control/CMakeFiles/homography_geometric_control.dir/build
+.PHONY : homography_geometric_control/fast
+
+# Convenience name for target.
+homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule:
+	cd /home/sw/homo_geo/build && $(MAKE) -f CMakeFiles/Makefile2 homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+.PHONY : homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_lisp: homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_lisp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_lisp/fast:
+	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+.PHONY : sensor_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/sw/homo_geo/build && $(MAKE) -f CMakeFiles/Makefile2 homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+.PHONY : homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_nodejs: homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+sensor_msgs_generate_messages_nodejs/fast:
+	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+.PHONY : sensor_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule:
+	cd /home/sw/homo_geo/build && $(MAKE) -f CMakeFiles/Makefile2 homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+.PHONY : homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_cpp: homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_cpp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_cpp/fast:
+	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+.PHONY : sensor_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
+	cd /home/sw/homo_geo/build && $(MAKE) -f CMakeFiles/Makefile2 homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+.PHONY : homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_py: homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_py
+
+# fast build rule for target.
+sensor_msgs_generate_messages_py/fast:
+	cd /home/sw/homo_geo/build && $(MAKE) -f homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make homography_geometric_control/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+.PHONY : sensor_msgs_generate_messages_py/fast
 
 src/HomographyGeometricControl.o: src/HomographyGeometricControl.cpp.o
 
@@ -345,13 +420,18 @@ help:
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... homo_geo"
-	@echo "... homography_geometric_control"
-	@echo "... homography_publish"
-	@echo "... offboard"
 	@echo "... edit_cache"
 	@echo "... install/local"
 	@echo "... test"
+	@echo "... offboard"
+	@echo "... homography_publish"
+	@echo "... homo_geo"
+	@echo "... sensor_msgs_generate_messages_eus"
+	@echo "... homography_geometric_control"
+	@echo "... sensor_msgs_generate_messages_lisp"
+	@echo "... sensor_msgs_generate_messages_nodejs"
+	@echo "... sensor_msgs_generate_messages_cpp"
+	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... src/HomographyGeometricControl.o"
 	@echo "... src/HomographyGeometricControl.i"
 	@echo "... src/HomographyGeometricControl.s"

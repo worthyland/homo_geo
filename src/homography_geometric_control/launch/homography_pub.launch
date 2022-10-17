@@ -3,10 +3,14 @@
  <node pkg="homography_geometric_control" name="homography_publish" type="homography_publish" output="screen">
     <param name="posDesire/x" value="0.0"/>
     <param name="posDesire/y" value="0.0"/>
-    <param name="posDesire/z" value="4.0"/>
+    <param name="posDesire/z" value="1.0"/>
     <param name="n/x" value="0.0"/>
     <param name="n/y" value="0.0"/>
     <param name="n/z" value="1.0"/>
-    <param name="d" value="4.0"/>
+    <param name="d" value="1.0"/>
+    <param name="pubChoose" value="0"/> <!-- 发布选择参数 0不发布 1从位置信息求解 2 从图像信息求解 -->
+    <param name="witdh" value="640"/>
+    <param name="hight" value="480"/>
+    <remap from="/iris/usb_cam/image_raw" to="image_raw"/> <!-- /galaxy_camera/image_raw -->
  </node>
 </launch>
