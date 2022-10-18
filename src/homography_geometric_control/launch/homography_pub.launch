@@ -1,7 +1,7 @@
 <launch>
 
  <node pkg="homography_geometric_control" name="homography_publish" type="homography_publish" output="screen">
-    <param name="pubChoose" type="int" value="1"/> <!-- 发布选择参数 0不发布 1从位置信息求解 2 从图像信息求解 -->
+    <param name="pubChoose" type="int" value="2"/> <!-- 发布选择参数 0不发布 1从位置信息求解 2 从图像信息求解 -->
     <param name="posDesire/x" type="double" value="0.0"/>
     <param name="posDesire/y" type="double" value="0.0"/>
     <param name="posDesire/z" type="double" value="1.0"/>

@@ -77,11 +77,13 @@ HomographyPublish::HomographyPublish(const ros::NodeHandle& nh,const ros::NodeHa
     nhParam.param<std::string>("refImgPath",refImgPath_,"/home/sw/homo_geo/src/homography_geometric_control/ref_img/");
     nhParam.param<std::string>("refImgName",refImgName_,"image_1.png");
 
-
-    imageSub_ = nh_.subscribe("/image_raw",10,&HomographyPublish::ImageCb,this);// /iris/usb_cam    /galaxy_camera
+    if(pubChoose_ == 2){
+        imageSub_ = nh_.subscribe("/image_raw",10,&HomographyPublish::ImageCb,this);// /iris/usb_cam    /galaxy_camera
+    }
     imagePub_ = nh_.advertise<sensor_msgs::Image>("/image_draw",5,true);
     resultsPub_ = nh_.advertise<homo_msgs::HomographyResult>("homography_pose", 1,true);
 
+    HMatrix_ = Eigen::Matrix3d::Identity();
     cameraK_ <<554.3827128, 0.0, 320.5, 0.0, 554.3827128, 240.5, 0.0, 0.0, 1.0;
     refImg_ = cv::imread(refImgPath_+refImgName_,cv::IMREAD_GRAYSCALE);
     double witdhRate = witdh_/(double)refImg_.cols;
