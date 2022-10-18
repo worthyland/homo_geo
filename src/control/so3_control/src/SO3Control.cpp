@@ -5,7 +5,7 @@ namespace Control
 {
 SO3Control::SO3Control(const ros::NodeHandle& nh,const ros::NodeHandle& nhParam):nhParam_(nhParam)
 {
-    nhParam_.param("Control_rate",controlRate_,60.0);
+    nhParam_.param("Control_rate",controlRate_,200.0);
     controlGain_.KR = Eigen::Matrix3d::Identity();
     nhParam_.param("ControlGain/KRx",controlGain_.KR(0,0),0.1);
     nhParam_.param("ControlGain/KRy",controlGain_.KR(1,1),0.1);
@@ -109,6 +109,7 @@ SO3Control::operator() (const Eigen::Matrix3d& RDesired,const Eigen::Vector3d& o
     ShowInternal(5);
     // ShowParamVal(5);
 }
+
 
 void 
 SO3Control::ShowInternal(int num) const

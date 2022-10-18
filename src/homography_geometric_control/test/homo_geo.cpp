@@ -22,7 +22,7 @@ int main(int argc, char *argv[]){
         ("record",10);
 
 
-    ros::Rate rate(200);
+    ros::Rate rate(outLoop.GetControlRate());
     std::cout<<"wait for the connected!"<<std::endl;
 
     while(ros::ok() && !uavInfo.GetCurrentControlState().connected){

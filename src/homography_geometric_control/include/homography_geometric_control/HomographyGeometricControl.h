@@ -31,6 +31,7 @@ private:
 
     ControlGain controlGain_;
     Eigen::Matrix3d homography_,homographyVirtual_;
+    double controlRate_;
     Control::Quadrotor curUavState_;//当前的无人机状态 basened相对refned
     /*    curUavState_ 内部变量
     *Eigen::Vector3d pos;//位置 ->
@@ -56,7 +57,8 @@ private:
     //以下变量为常量
     Eigen::Vector3d mStar_;
     Eigen::Vector3d axisZ_;
-    double yawDesired_;//期望偏航角
+    double yawDesired_,yawDesiredLast_;//期望偏航角
+    double dot_yawDesired_;//期望偏航角角速度
     Eigen::Vector3d b1c_;//
     double thrustOffest_;//重力和推力平衡时的零偏值 0～1
     double thrustScale_;//推力的缩放比例
@@ -86,6 +88,7 @@ public:
     const Eigen::Matrix3d& GetRDesired()const;
     const Eigen::Vector3d& GetOmegaDesired()const;
     const double& GetThrust()const;
+    const double& GetControlRate() const;
     void ShowInternal(int num = 5) const;
     void ShowParamVal(int num = 5) const;
 };

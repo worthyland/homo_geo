@@ -8,9 +8,11 @@ HomographyGeometric::HomographyGeometric(const ros::NodeHandle& nh,const ros::No
     homographySub = nh_.subscribe("homography_pose",1,&HomographyGeometric::HomographyCallback,this);
 
     //参数初始化
+    nhParam_.param("Control_rate",controlRate_,200.0);
     nhParam_.param("ControlGain/c",controlGain_.c,1.0);
     nhParam_.param("YawDesired",yawDesired_,0.0);
     b1c_ << cos(yawDesired_),sin(yawDesired_),0;
+    dot_yawDesired_ = 0.0;
     controlGain_.Kv = Eigen::Matrix3d::Identity();
     nhParam_.param("ControlGain/Kvx",controlGain_.Kv(0,0),1.0);
     nhParam_.param("ControlGain/Kvy",controlGain_.Kv(1,1),1.0);
@@ -107,8 +109,9 @@ HomographyGeometric::UpdateRotationDesired()
     Eigen::Vector3d dot_b1c;
     Eigen::Vector3d tmp,dot_tmp;//tmp代表临时变量 局部变量
 
-    dot_b1c << -sin(yawDesired_)*curUavState_.GetOmega()(2),cos(yawDesired_)*curUavState_.GetOmega()(2),0;
-
+    dot_yawDesired_ =(yawDesired_ - yawDesiredLast_)*controlRate_;
+    dot_b1c << -sin(yawDesired_)*dot_yawDesired_,cos(yawDesired_)*dot_yawDesired_,0;
+    yawDesiredLast_ = yawDesired_;
     b3d = RZ_ * (- FVitual_/curUavState_.GetMass() + curUavState_.GetGravity()*axisZ_ );
     tmp = b3d;
     //限幅处理
@@ -220,6 +223,13 @@ HomographyGeometric::GetThrust()const
 {
     return thrust_;
 }
+
+const double& 
+HomographyGeometric::GetControlRate() const
+{
+    return controlRate_;
+}
+
 void 
 HomographyGeometric::ShowInternal(int num) const
 {

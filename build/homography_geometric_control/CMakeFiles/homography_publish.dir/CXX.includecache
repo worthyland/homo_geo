@@ -73,6 +73,10 @@ cv_bridge/cv_bridge.h
 -
 Eigen/Eigen
 -
+opencv2/core.hpp
+-
+opencv2/highgui/highgui.hpp
+-
 opencv2/core/base.hpp
 -
 opencv2/core/eigen.hpp

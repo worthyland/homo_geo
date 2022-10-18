@@ -23,8 +23,8 @@
     <param name="ControlGain/Kvx" value="6.0"/>
     <param name="ControlGain/Kvy" value="6.0"/>
     <param name="ControlGain/Kvz" value="4.0"/>
-    <param name="ThrustOffest" value="0.567"/>
-    <param name="ThrustScale" value="0.25"/>
+    <param name="ThrustOffest" value="0.567"/> <!-- 归一化推力的偏移量  无人机稳定时的系数 -->
+    <param name="ThrustScale" value="0.25"/><!-- 归一化推力的的缩放因子-->
  </node>
 
 </launch>
