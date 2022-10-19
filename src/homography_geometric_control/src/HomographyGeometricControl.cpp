@@ -216,6 +216,7 @@ HomographyGeometric::operator() (const Control::Quadrotor& curUavState)
     // Common::ShowVal("RY_",RY_);
     // Common::ShowVal("RX_",RX_);
     // Common::ShowVal("angle(0)",angle(0));
+    
     // Common::ShowVal("yawFromHomographyVirtual_",yawFromHomographyVirtual_);
     curUavState_.ShowState("homo",5);
     ShowInternal(5);
