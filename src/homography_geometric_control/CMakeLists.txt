@@ -29,7 +29,7 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
 
-find_package( OpenCV REQUIRED )##不指定版本，会报错，可能是兼容问题, 莫名又好了
+find_package( OpenCV REQUIRED )## 4.5.0 版本会报错   指定3.2.0就不报错 不指定版本，会报错，可能是兼容问题, 莫名又好了
 include_directories( 
 ${OpenCV_INCLUDE_DIRS} )
 catkin_package(
