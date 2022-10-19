@@ -33,6 +33,7 @@ private:
     Eigen::Matrix3d homography_,homographyVirtual_;
     double controlRate_;
     Control::Quadrotor curUavState_;//当前的无人机状态 basened相对refned
+
     /*    curUavState_ 内部变量
     *Eigen::Vector3d pos;//位置 ->
     *Eigen::Vector3d vel;//速度 ->需要相对于机体nedzuo坐标系下的速度
@@ -46,7 +47,9 @@ private:
     *double g;//重力加速度大小
     *Eigen::Matrix3d J;//惯性矩阵；
      */
-    Eigen::Matrix3d RZ_,RY_,RX_;//
+    Eigen::Matrix3d RZ_,RY_,RX_;//当前欧拉角各自的旋转矩阵
+    double yawFromHomographyVirtual_;//从虚拟单应性中求解的偏航角
+    Eigen::Matrix3d RZFromHomographyVirtual_;//从yawFromHomographyVirtual_构建的偏航旋转矩阵
     Eigen::Vector3d e1_,e2_;
     Eigen::Vector3d FVitual_;
     Eigen::Matrix3d RDesired_;
@@ -69,6 +72,7 @@ private:
     virtual void HomographyCallback(const homo_msgs::HomographyResult::ConstPtr& msg);
 
 private:
+    const double UpdateyawFromHomographyVirtual();
     const Eigen::Vector3d UpdateError1();
     const Eigen::Vector3d UpdateError2();
     const Eigen::Vector3d UpdateFVitual();

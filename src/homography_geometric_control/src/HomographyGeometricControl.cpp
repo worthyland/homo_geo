@@ -31,6 +31,8 @@ HomographyGeometric::HomographyGeometric(const ros::NodeHandle& nh,const ros::No
     RDesired_ = Eigen::Matrix3d::Identity();
     dot_RDesired_ = Eigen::Matrix3d::Zero();
     omegaDesired_ = Eigen::Vector3d::Zero();
+    yawFromHomographyVirtual_ = 0.0;
+    RZFromHomographyVirtual_ = Eigen::Matrix3d::Identity();
     mStar_ << 0,0,1;
     axisZ_ << 0,0,1;
     thrust_ = curUavState_.GetMass() * curUavState_.GetGravity();
@@ -64,6 +66,13 @@ HomographyGeometric::SetCurUavState(const Control::Quadrotor& val)
     curUavState_ = val;
 }
 
+const double 
+HomographyGeometric::UpdateyawFromHomographyVirtual()
+{
+    double res;
+    res = asin(0.5*Common::MatrixHatInv(homographyVirtual_.transpose() - homographyVirtual_).transpose() * axisZ_);
+    return res;
+}
 const Eigen::Vector3d
 HomographyGeometric::UpdateError1()
 {
@@ -187,6 +196,11 @@ HomographyGeometric::operator() (const Control::Quadrotor& curUavState)
     RZ_ << cos(angle(0)),-sin(angle(0)),0,sin(angle(0)),cos(angle(0)),0,0,0,1;
     RY_ << cos(angle(1)),0,sin(angle(1)),0,1,0,-sin(angle(1)),0,cos(angle(1));
     RX_ << 1,0,0,0,cos(angle(2)),-sin(angle(2)),0,sin(angle(2)),cos(angle(2));
+    
+    yawFromHomographyVirtual_ = UpdateyawFromHomographyVirtual();//arcsin(0.5 * vec(hv_T-hv)_T * ez)
+    RZFromHomographyVirtual_ << cos(yawFromHomographyVirtual_),-sin(yawFromHomographyVirtual_),0,sin(yawFromHomographyVirtual_),cos(yawFromHomographyVirtual_),0,0,0,1;
+    //更新当前的旋转矩阵
+    curUavState_.SetR(RZFromHomographyVirtual_*RY_*RX_);
 
     e1_ = UpdateError1();//e1 = (I-Hv)*m
 
@@ -201,6 +215,8 @@ HomographyGeometric::operator() (const Control::Quadrotor& curUavState)
     // Common::ShowVal("RZ_",RZ_);
     // Common::ShowVal("RY_",RY_);
     // Common::ShowVal("RX_",RX_);
+    // Common::ShowVal("angle(0)",angle(0));
+    // Common::ShowVal("yawFromHomographyVirtual_",yawFromHomographyVirtual_);
     curUavState_.ShowState("homo",5);
     ShowInternal(5);
     // ShowParamVal(5);
