@@ -77,7 +77,7 @@ HomographyPublish::HomographyPublish(const ros::NodeHandle& nh,const ros::NodeHa
     nhParam.param<std::string>("refImgPath",refImgPath_,"/home/sw/homo_geo/src/homography_geometric_control/ref_img/");
     nhParam.param<std::string>("refImgName",refImgName_,"image_1.png");
 
-    if(pubChoose_ == 2){
+    if(pubChoose_ == 2 ||pubChoose_ == 4){
         imageSub_ = nh_.subscribe("/image_raw",10,&HomographyPublish::ImageCb,this);// /iris/usb_cam    /galaxy_camera
     }
     imagePub_ = nh_.advertise<sensor_msgs::Image>("/image_draw",5,true);
@@ -212,7 +212,7 @@ HomographyPublish::operator() (const Control::Quadrotor::state& curState)
 {
    homoMatrixFromPose_ =HomographyCalculationFromPose(curState);
     if(pubChoose_ == 0){}
-    else if(pubChoose_ == 1){
+    else if(pubChoose_ == 1 || pubChoose_ == 4){
         resultsPub_.publish(homoMatrixFromPose_);
         std::cout << "!!!!!!!!!!!!!!!!!!!!HomographyPubFromPose!!!!!!!!!!!!!!!!!!!!"<< std::endl;
     }else if(pubChoose_ == 2){

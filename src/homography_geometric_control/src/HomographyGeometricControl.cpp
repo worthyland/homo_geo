@@ -19,7 +19,12 @@ HomographyGeometric::HomographyGeometric(const ros::NodeHandle& nh,const ros::No
     nhParam_.param("ControlGain/Kvz",controlGain_.Kv(2,2),1.0);
     nhParam_.param("ThrustOffest",thrustOffest_,0.40);
     nhParam_.param("ThrustScale",thrustScale_,0.025);
-
+    nhParam_.param("ControlGain/k1",controlGain_.k1,5.0);
+    nhParam_.param("ControlGain/k2",controlGain_.k2,1.0);
+    nhParam_.param("ControlGain/k3",controlGain_.k3,1.0);
+    nhParam_.param("YawOffest",eulerAngleOffest_(2),0.0);
+    nhParam_.param("RollOffest",eulerAngleOffest_(1),0.0);
+    nhParam_.param("PitchOffest",eulerAngleOffest_(0),0.0);
     homography_ = Eigen::Matrix3d::Identity();
     homographyVirtual_ = Eigen::Matrix3d::Identity();
     RZ_ = Eigen::Matrix3d::Identity();
@@ -82,13 +87,23 @@ HomographyGeometric::UpdateError1()
 }
 
 const Eigen::Vector3d
-HomographyGeometric::UpdateError2()
+HomographyGeometric::UpdateError2FromTrueVel()
 {
     Eigen::Vector3d res;
     res = e1_ + (RY_*RX_*curUavState_.GetVel())/controlGain_.c;
     
     return res;
 }
+
+const Eigen::Vector3d
+HomographyGeometric::UpdateError2FromEstVel()
+{
+    Eigen::Vector3d res;
+    res = e1_ + (velVitualEst_)/controlGain_.c;
+    
+    return res;
+}
+
 
 const Eigen::Vector3d 
 HomographyGeometric::UpdateFVitual()
@@ -163,11 +178,39 @@ HomographyGeometric::UpdateOmegaDesired()
     return res;
 }
 
+const Eigen::Vector3d 
+HomographyGeometric::UpdateVelocityEstimation()
+{
+    
+    // static Eigen::Vector3d  e1ErrorTmp = Eigen::Vector3d::Zero();
+    // static Eigen::Vector3d  e1EstTmp = Eigen::Vector3d::Zero();
+    // static Eigen::Vector3d  velVitualErrorTmp = Eigen::Vector3d::Zero();
+    // static Eigen::Vector3d  velVitualEstTmp = Eigen::Vector3d::Zero();
+    double aStar_ = 1.0;
+
+    Eigen::Vector3d dot_e1EatTmp = - Common::MatrixHat(curUavState_.GetOmega()(2) * axisZ_)*e1Error_
+                                    + aStar_*velVitualEst_ + controlGain_.k1*e1Error_;
+    e1Est_ = e1Est_ + dot_e1EatTmp/controlRate_;
+    e1Error_ = e1_ - e1Est_;
+
+    // Eigen::Vector3d dot_velVitualEstTmp = -Common::MatrixHat(curUavState_.GetOmega()(2) * axisZ_)*velVitualEst_
+    //                                     + RY_*RX_*curUavState_.GetAcc() + controlGain_.k2*e1Error_;
+    Eigen::Vector3d dot_velVitualEstTmp = -Common::MatrixHat(curUavState_.GetOmega()(2) * axisZ_)*velVitualEst_
+                                        + RY_*RX_*curUavState_.GetAcc() + controlGain_.k2*e1Error_ + controlGain_.k3*velVitualError_;
+    velVitualEst_ = velVitualEst_ + dot_velVitualEstTmp/controlRate_;
+    // velVitualError_ = RY_*RX_*curUavState_.GetVel() - velVitualEst_;
+    velVitualError_ = velVitualEstToTrue_ - velVitualEst_;
+    velVitualEstToTrue_ = velVitualEst_;
+    return velVitualEst_;
+}
+
 const Eigen::Vector3d& 
 HomographyGeometric::GetOmegaDesired()const
 {
     return omegaDesired_;
 }
+
+
 void 
 HomographyGeometric::operator() (const Control::Quadrotor& curUavState)
 {
@@ -190,8 +233,9 @@ HomographyGeometric::operator() (const Control::Quadrotor& curUavState)
     //更新内部变量
     // Eigen::Vector3d angle(curUavState_.GetEulerAngle());
     Eigen::Vector3d angle(curUavState_.GetEulerAngle());
+    
 
-
+    angle -= eulerAngleOffest_;
 
     RZ_ << cos(angle(0)),-sin(angle(0)),0,sin(angle(0)),cos(angle(0)),0,0,0,1;
     RY_ << cos(angle(1)),0,sin(angle(1)),0,1,0,-sin(angle(1)),0,cos(angle(1));
@@ -204,19 +248,19 @@ HomographyGeometric::operator() (const Control::Quadrotor& curUavState)
 
     e1_ = UpdateError1();//e1 = (I-Hv)*m
 
-    e2_ = UpdateError2();//e2 = e1 + Vv/c
-
+    e2_ = UpdateError2FromTrueVel();//e2 = e1 + Vv/c
+    e2_ = UpdateError2FromEstVel();
     FVitual_ = UpdateFVitual();//Fv = -Kv * e2
 
     thrust_ = UpdateThrust();//T = - [Fv - m*g*ez]' (RY*RX *ez);
     RDesired_ = UpdateRotationDesired();//FVitual_ -> RDesired_
     omegaDesired_ = UpdateOmegaDesired();
-
+    velVitualEst_ = UpdateVelocityEstimation();//估计虚拟框架当前速度
     // Common::ShowVal("RZ_",RZ_);
     // Common::ShowVal("RY_",RY_);
     // Common::ShowVal("RX_",RX_);
     // Common::ShowVal("angle(0)",angle(0));
-    
+
     // Common::ShowVal("yawFromHomographyVirtual_",yawFromHomographyVirtual_);
     curUavState_.ShowState("homo",5);
     ShowInternal(5);
@@ -247,11 +291,54 @@ HomographyGeometric::GetControlRate() const
     return controlRate_;
 }
 
+const Eigen::Vector3d&
+HomographyGeometric::GetE1() const
+{
+    return e1_;
+}
+
+const Eigen::Vector3d&
+HomographyGeometric::GetE2() const
+{
+    return e2_;
+}
+
+const Eigen::Vector3d&
+HomographyGeometric::GetE1Error() const
+{
+    return e1Error_;
+}
+
+const Eigen::Vector3d&
+HomographyGeometric::GetE1Est() const
+{
+    return e1Est_;
+}
+
+const Eigen::Vector3d&
+HomographyGeometric::GetVelVitualError() const
+{
+    return velVitualError_;
+}
+
+const Eigen::Vector3d&
+HomographyGeometric::GetVelVitualEst() const
+{
+    return velVitualEst_;
+}
+
+const Eigen::Vector3d 
+HomographyGeometric::GetVelVitualTure() const
+{
+    return RY_*RX_*curUavState_.GetVel();
+}
+
 void 
 HomographyGeometric::ShowInternal(int num) const
 {
     std::cout << "-------------------HomographyFGeometric-------------------" <<std::endl;
     Common::ShowVal("homography_",homography_,num);
+    Common::ShowVal("homographyVirtual_",homographyVirtual_,num);
     Common::ShowVal("e1_",e1_,num);
     Common::ShowVal("e2_",e2_,num);
     Common::ShowVal("FVitual_",FVitual_,num);
@@ -259,6 +346,9 @@ HomographyGeometric::ShowInternal(int num) const
     Common::ShowVal("RDesired_",RDesired_,num);
     Common::ShowVal("dot_RDesired_",dot_RDesired_,num);
     Common::ShowVal("omegaDesired_",omegaDesired_,num);
+    Common::ShowVal("velVitualEst_",velVitualEst_);
+    Common::ShowVal("RY_*RX_*curUavState_.GetVel()",RY_*RX_*curUavState_.GetVel());
+    Common::ShowVal("velVitualError_",velVitualError_);
 
 }
 

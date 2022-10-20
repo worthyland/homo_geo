@@ -39,6 +39,8 @@ mavros_msgs/State.h
 -
 mavros_msgs/ActuatorControl.h
 -
+std_msgs/Float32MultiArray.h
+-
 uav_state/UAVState.h
 -
 

@@ -175,4 +175,18 @@ MavrosInteraction::ActuatorPub(const double& thrust,const Eigen::Vector3d& torqu
     mixPub_.publish(mixTmp);
 }
 
+void 
+MavrosInteraction::DataSvae(std_msgs::Float32MultiArray& outputRecord,const Eigen::Vector3d& val) const
+{
+    outputRecord.data.push_back(val(0));
+    outputRecord.data.push_back(val(1));
+    outputRecord.data.push_back(val(2));
+}
+
+void 
+MavrosInteraction::DataSvae(std_msgs::Float32MultiArray& outputRecord,const double& val) const
+{
+    outputRecord.data.push_back(val);
+}
+
 }

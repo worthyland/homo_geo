@@ -71,7 +71,10 @@ control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteracti
 control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteraction.cpp.o: /opt/ros/melodic/include/ros/wall_timer_options.h
 control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteraction.cpp.o: /opt/ros/melodic/include/rosconsole/macros_generated.h
 control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteraction.cpp.o: /opt/ros/melodic/include/sensor_msgs/Imu.h
+control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteraction.cpp.o: /opt/ros/melodic/include/std_msgs/Float32MultiArray.h
 control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteraction.cpp.o: /opt/ros/melodic/include/std_msgs/Header.h
+control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteraction.cpp.o: /opt/ros/melodic/include/std_msgs/MultiArrayDimension.h
+control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteraction.cpp.o: /opt/ros/melodic/include/std_msgs/MultiArrayLayout.h
 control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteraction.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
 control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteraction.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h
 control/mavros_interaction/CMakeFiles/mavros_interaction.dir/src/MavrosInteraction.cpp.o: /usr/include/eigen3/Eigen/Cholesky

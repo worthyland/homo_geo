@@ -13,6 +13,7 @@
 #include <mavros_msgs/State.h>
 #include <mavros_msgs/ActuatorControl.h>
 
+#include <std_msgs/Float32MultiArray.h>
 //需要的头文件
 #include <uav_state/UAVState.h>
 namespace Control
@@ -65,8 +66,10 @@ public:
     const Quadrotor& GetQuadrotor()const;
     const mavros_msgs::State& GetCurrentControlState()const;
 
-    void ActuatorPub(const double& thrust = 0.50,const Eigen::Vector3d& torque = {0,0,0},bool showVal=false) const;
-    
+    void ActuatorPub(const double& thrust = 0.50,const Eigen::Vector3d& torque = {0,0,0},bool showVal=false) const;//推力 力矩发布
+
+    void DataSvae(std_msgs::Float32MultiArray& outputRecord,const Eigen::Vector3d& val) const;//数据发布中转函数
+    void DataSvae(std_msgs::Float32MultiArray& outputRecord,const double& val) const;//数据发布中转函数
 };
 
 

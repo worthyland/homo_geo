@@ -14,7 +14,7 @@ SO3Control::SO3Control(const ros::NodeHandle& nh,const ros::NodeHandle& nhParam)
     nhParam_.param("ControlGain/KOmegax",controlGain_.KOmega(0,0),0.01);
     nhParam_.param("ControlGain/KOmegay",controlGain_.KOmega(1,1),0.01);
     nhParam_.param("ControlGain/KOmegaz",controlGain_.KOmega(2,2),0.01);
-
+    attitudeTrackError_ = 0.0;
 }
 
 SO3Control::~SO3Control()
@@ -63,7 +63,23 @@ SO3Control::GetTorque() const
     return torque_;
 }
 
+const Eigen::Vector3d& 
+SO3Control::GetER() const
+{
+    return eR_;
+}
 
+const Eigen::Vector3d& 
+SO3Control::GetEOmega() const
+{
+    return eOmega_;
+}
+
+const double& 
+SO3Control::GetAttitudeTrackError() const
+{
+    return attitudeTrackError_;
+}
 
 const Eigen::Vector3d 
 SO3Control::UpdateER()
@@ -94,6 +110,13 @@ SO3Control::UpdateTorque()
     // res = part2 + part3;
     return res;
 }
+const double 
+SO3Control::UpdateAttitudeTrackError()
+{
+    double res;
+    res = 0.5*(Eigen::Matrix3d::Identity() - RDesired_.transpose() * curUavState_.GetR()).trace();
+    return res;
+}
 void 
 SO3Control::operator() (const Eigen::Matrix3d& RDesired,const Eigen::Vector3d& omegaDesired,const Control::Quadrotor& curUavState)
 {
@@ -104,7 +127,7 @@ SO3Control::operator() (const Eigen::Matrix3d& RDesired,const Eigen::Vector3d& o
     eR_ = UpdateER();
     eOmega_ = UpdateEOmega();
     torque_ = UpdateTorque();
-
+    attitudeTrackError_ = UpdateAttitudeTrackError();
     
     ShowInternal(5);
     // ShowParamVal(5);

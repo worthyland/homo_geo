@@ -22,6 +22,7 @@ struct ControlGain
     double c;
     Eigen::Matrix3d Kv;
 
+    double k1,k2,k3;
 };
 private:
     /* data */
@@ -65,8 +66,14 @@ private:
     Eigen::Vector3d b1c_;//
     double thrustOffest_;//重力和推力平衡时的零偏值 0～1
     double thrustScale_;//推力的缩放比例
+    Eigen::Vector3d eulerAngleOffest_;
 
-    
+    //速度观测器相关变量
+    Eigen::Vector3d  velVitualEstToTrue_;//估计的虚拟框架速度
+    Eigen::Vector3d  e1Error_;
+    Eigen::Vector3d  e1Est_;
+    Eigen::Vector3d  velVitualError_;
+    Eigen::Vector3d  velVitualEst_;//估计的虚拟框架速度
     bool homographyCallbackState;
 
     virtual void HomographyCallback(const homo_msgs::HomographyResult::ConstPtr& msg);
@@ -74,11 +81,13 @@ private:
 private:
     const double UpdateyawFromHomographyVirtual();
     const Eigen::Vector3d UpdateError1();
-    const Eigen::Vector3d UpdateError2();
+    const Eigen::Vector3d UpdateError2FromTrueVel();
+    const Eigen::Vector3d UpdateError2FromEstVel();
     const Eigen::Vector3d UpdateFVitual();
     const double UpdateThrust();
     const Eigen::Matrix3d UpdateRotationDesired();
     const Eigen::Vector3d UpdateOmegaDesired();
+    const Eigen::Vector3d UpdateVelocityEstimation();
 
 public:
     HomographyGeometric(const ros::NodeHandle& nh,const ros::NodeHandle& nhParam);
@@ -93,6 +102,15 @@ public:
     const Eigen::Vector3d& GetOmegaDesired()const;
     const double& GetThrust()const;
     const double& GetControlRate() const;
+    const Eigen::Vector3d& GetE1() const;
+    const Eigen::Vector3d& GetE2() const;
+
+    const Eigen::Vector3d& GetE1Error() const;
+    const Eigen::Vector3d& GetE1Est() const;
+    const Eigen::Vector3d& GetVelVitualError() const;
+    const Eigen::Vector3d& GetVelVitualEst() const;
+    const Eigen::Vector3d GetVelVitualTure() const;
+
     void ShowInternal(int num = 5) const;
     void ShowParamVal(int num = 5) const;
 };

@@ -44,9 +44,22 @@ int main(int argc, char *argv[]){
         // uavInfo.ActuatorPub();
 
         std_msgs::Float32MultiArray outputRecord;
-        outputRecord.data.push_back(attitudeControllor.GetTorque()(0));
-        outputRecord.data.push_back(attitudeControllor.GetTorque()(1));
-        outputRecord.data.push_back(attitudeControllor.GetTorque()(2));
+
+        uavInfo.DataSvae(outputRecord,outLoop.GetE1());//0 1 2
+        uavInfo.DataSvae(outputRecord,outLoop.GetE2());//3 4 5
+        uavInfo.DataSvae(outputRecord,outLoop.GetE1Error());//6 7 8 
+        uavInfo.DataSvae(outputRecord,outLoop.GetE1Est());//9 10 11
+        uavInfo.DataSvae(outputRecord,outLoop.GetVelVitualError());//12 13 14
+        uavInfo.DataSvae(outputRecord,outLoop.GetVelVitualEst());//15 16 17
+        uavInfo.DataSvae(outputRecord,outLoop.GetVelVitualTure());// 18 19 20
+
+        uavInfo.DataSvae(outputRecord,outLoop.GetQuadrotor().GetEulerAngle() *180 /M_PI);//21 22 23
+
+        uavInfo.DataSvae(outputRecord,attitudeControllor.GetTorque()); // 24 25 26
+        uavInfo.DataSvae(outputRecord,attitudeControllor.GetER());//27 28 29
+        uavInfo.DataSvae(outputRecord,attitudeControllor.GetEOmega());// 30 31 32
+        uavInfo.DataSvae(outputRecord,outLoop.GetThrust());// 33
+        uavInfo.DataSvae(outputRecord,attitudeControllor.GetAttitudeTrackError());// 34
         recordPub.publish(outputRecord);
 
         ros::spinOnce();

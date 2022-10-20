@@ -21,3 +21,4 @@ rosrun mavros mavcmd long 511 32 16666 0 0 0 0 0
 //（mavros/local_position/pose）60hz
 
 
+rosbag record /record /mavros/local_position/pose /image_draw

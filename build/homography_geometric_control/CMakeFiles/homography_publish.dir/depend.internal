@@ -88,7 +88,10 @@ homography_geometric_control/CMakeFiles/homography_publish.dir/test/homography_p
  /opt/ros/melodic/include/sensor_msgs/Imu.h
  /opt/ros/melodic/include/sensor_msgs/RegionOfInterest.h
  /opt/ros/melodic/include/sensor_msgs/image_encodings.h
+ /opt/ros/melodic/include/std_msgs/Float32MultiArray.h
  /opt/ros/melodic/include/std_msgs/Header.h
+ /opt/ros/melodic/include/std_msgs/MultiArrayDimension.h
+ /opt/ros/melodic/include/std_msgs/MultiArrayLayout.h
  /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
  /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h
  /usr/include/eigen3/Eigen/Cholesky

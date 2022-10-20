@@ -31,13 +31,15 @@ private:
     Eigen::Vector3d omegaDesired_;
     Eigen::Matrix3d RDesired_;
     Eigen::Vector3d torque_;
-    Eigen::Vector3d eR_,eOmega_;
+    Eigen::Vector3d eR_,eOmega_;//姿态误差
+
+    double attitudeTrackError_;
 
 private:
     const Eigen::Vector3d UpdateER();
     const Eigen::Vector3d UpdateEOmega();
     const Eigen::Vector3d UpdateTorque();
-
+    const double UpdateAttitudeTrackError();
 public:
     SO3Control(const ros::NodeHandle& nh,const ros::NodeHandle& nhParam);
     ~SO3Control();
@@ -50,6 +52,9 @@ public:
     const Eigen::Vector3d& GetOmegaDesired() const;
 
     const Eigen::Vector3d& GetTorque() const;
+    const Eigen::Vector3d& GetER() const;
+    const Eigen::Vector3d& GetEOmega() const;
+    const double& GetAttitudeTrackError() const;
 
     void operator() (const Eigen::Matrix3d& RDesired,const Eigen::Vector3d& omegaDesired,const Control::Quadrotor& curUavState);
     void ShowInternal(int num = 5) const;
