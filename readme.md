@@ -32,9 +32,9 @@ rosbag record /record /mavros/local_position/pose /image_draw
 
 # 安装mavros
 
-sudo apt-get install ros-noetic-mavros
+sudo apt-get install ros-kinetic-mavros ros-kinetic-mavros-extras
 
-cd /opt/ros/noetic/lib/mavros
+cd /opt/ros/noetic/lib/mavros //or (wget https://raw.githubusercontent.com/mavlink/mavros/master/mavros/scripts/install_geographiclib_datasets.sh)
 
 sudo ./install_geographiclib_datasets.sh
 
