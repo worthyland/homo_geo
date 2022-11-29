@@ -61,12 +61,8 @@ ssh：
 
 sudo apt install openssh-server
 
-在笔记本上：ping 192.168.**.**
+ssh 192.168.**.**(ssh 远程电脑ipv4地址（同一局域网）)
 
-sudo gedit /etc/hosts
+远程桌面
 
-加上一行：192.168.**.** fast-drone
-
-ping fast-drone
-
-ssh fast-drone@fast-drone(ssh 用户名@别名)
+推荐 nomachine
