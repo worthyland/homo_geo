@@ -1,4 +1,4 @@
-定义环境变量
+# 定义环境变量
 source devel/setup.sh
 
 函数命名采用大驼峰法
@@ -22,3 +22,37 @@ rosrun mavros mavcmd long 511 32 16666 0 0 0 0 0
 
 
 rosbag record /record /mavros/local_position/pose /image_draw
+
+
+# 常用软件
+VScode：sudo dpkg -i ***.deb
+
+Terminator：sudo apt install terminator
+
+Plotjuggler：
+
+sudo apt install ros-noetic-plotjuggler
+
+sudo apt install ros-noetic-plotjuggler-ros
+
+rosrun plotjuggler plotjuggler
+
+Net-tools：
+
+sudo apt install net-tools
+
+ifconfig
+
+ssh：
+
+sudo apt install openssh-server
+
+在笔记本上：ping 192.168.**.**
+
+sudo gedit /etc/hosts
+
+加上一行：192.168.**.** fast-drone
+
+ping fast-drone
+
+ssh fast-drone@fast-drone(ssh 用户名@别名)
