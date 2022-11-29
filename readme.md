@@ -30,6 +30,13 @@ rosrun mavros mavcmd long 511 32 16666 0 0 0 0 0
 
 rosbag record /record /mavros/local_position/pose /image_draw
 
+# 安装mavros
+
+sudo apt-get install ros-noetic-mavros
+
+cd /opt/ros/noetic/lib/mavros
+
+sudo ./install_geographiclib_datasets.sh
 
 # 常用软件
 VScode：sudo dpkg -i ***.deb
