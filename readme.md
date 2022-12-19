@@ -72,7 +72,8 @@ ssh 192.168.**.**(ssh 远程电脑ipv4地址（同一局域网）)
 ## ssh远程连接
 ssh linux@192.168.2.149
 ## 启动无人机
-sudo chmod 777 /dev/ttyUSB0 
+sudo chmod 777 /dev/ttyUSB0  
+
 roslaunch mavros px4.launch gcs_url:=udp://@192.168.2.100
 ## 运行动作捕捉系统
 roslaunch vrpn_client_ros sample.launch server:=192.168.2.135
@@ -82,6 +83,7 @@ rosrun topic_tools relay /vrpn_client_node/uav1/pose /mavros/vision_pose/pose
 
 # 查看数据是否正常
 rostopic echo /mavros/vision_pose/pose
+
 rostopic echo /mavros/local_position/pose
 
 roslaunch ima-lanind position_test.launch arg =  (qifei)
@@ -89,10 +91,13 @@ roslaunch ima-lanind position_test.launch arg =  (qifei)
 
 ## sw_test
 roslaunch galaxy_camera MER-139.launch 
+
 rosrun sw_uav_homo sw_e3_control_rpy_with_dynamics
+
 rosrun sw_uav_homo sw_homo_Chessboard
 
 cd /media/robot/G
+
 rosbag record  /mavros/imu/data /output_record /mavros/local_position/velocity_body /tracking /sw/image_raw /mavros/local_position/pose
 
 
@@ -103,4 +108,5 @@ sudo chmod 755 /
 rosrun image_view video_recorder image:=/galaxy_camera/image_raw
 # 记录摄像头话题
 rosbag record /galaxy_camera/image_raw
+
 rosbag play ()   /galaxy_camera/image_raw:=/camera/image_raw
